@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
 
@@ -195,12 +194,12 @@ else:
     return;
   }
   for (let date = new Date(startDate); date < endDate; date.setDate(date.getDate() + 1)) {
-    calendar.createEvent(\`Booked by ${name}\`, new Date(date).setHours(0), new Date(date).setHours(23));
+    calendar.createEvent(\`Booked by \${name}\`, new Date(date).setHours(0), new Date(date).setHours(23));
   }
   MailApp.sendEmail({
     to: email,
     subject: "Booking Confirmed",
-    body: \`Hi ${name},\n\nYour booking has been confirmed.\`
+    body: \`Hi \${name},\n\nYour booking has been confirmed.\`
   });
 }`
         },

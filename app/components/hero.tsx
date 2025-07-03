@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,11 +38,14 @@ export default function Hero() {
           <div className="relative flex justify-center md:justify-end">
             <div className="w-64 h-64 rounded-full overflow-hidden shadow-2xl border-4 border-accent relative hover:scale-105 transition-all duration-300">
               <div className="absolute inset-0 bg-accent/10 z-10" />
-              <img 
-                src="/praveenpfp.jpeg" 
-                alt="Praveen Mahtani" 
-                className="w-full h-full object-cover" 
-              />
+<Image
+  src="/praveenpfp.jpeg"
+  alt="Praveen Mahtani"
+  width={500} // set appropriate width
+  height={300} // and height
+  priority // optional: if it's in the hero section
+/>
+
             </div>
           </div>
         </div>
