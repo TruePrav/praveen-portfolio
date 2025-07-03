@@ -6,24 +6,21 @@ import Image from 'next/image';
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleContact = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  const handleContact = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-6 pt-32 pb-16 sm:pt-40 animate-fade-in">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center justify-items-center md:justify-items-start">
           {/* Left Column - Text */}
-          <div className="space-y-6 text-center md:text-left">
+          <div className="space-y-6 text-center md:text-left md:items-start">
             <h1 className="hero-name">Praveen Mahtani</h1>
             <h2 className="hero-subtitle">IT Specialist | AI & Automation Enthusiast | Web3 Builder</h2>
-            <h2 className="hero-description">5+ years of experience providing exceptional IT support, optimizing systems, and automating workflows. Passionate about AI, community building, and using technology to solve real-world problems.</h2>
-
+            <h2 className="hero-description">
+              5+ years of experience providing exceptional IT support, optimizing systems, and automating workflows.
+              Passionate about AI, community building, and using technology to solve real-world problems.
+            </h2>
             <div className="mt-8">
               <button
                 onClick={handleContact}
@@ -34,33 +31,35 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column - Profile Photo */}
-          <div className="relative flex justify-center md:justify-end">
-            <div className="w-64 h-64 rounded-full overflow-hidden shadow-2xl border-4 border-accent relative hover:scale-105 transition-all duration-300">
-              <div className="absolute inset-0 bg-accent/10 z-10" />
-<Image
-  src="/praveenpfp.jpeg"
-  alt="Praveen Mahtani"
-  width={500} // set appropriate width
-  height={300} // and height
-  priority // optional: if it's in the hero section
-/>
+        {/* Right Column - Profile Photo */}
+        <div className="flex justify-center md:justify-start w-full md:pl-10">
+  <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl border-4 border-accent relative hover:scale-105 transition-all duration-300">
+    <div className="absolute inset-0 bg-accent/10 z-10" />
+    <Image
+      src="/praveenpfp.jpeg"
+      alt="Praveen Mahtani"
+      fill
+      className="object-cover z-0"
+      priority
+    />
+  </div>
+</div>
 
-            </div>
-          </div>
+
+
         </div>
       </div>
 
       {/* Contact Modal */}
       {isModalOpen && (
-  <div
-    className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-    onClick={handleCloseModal} // 👈 Close modal on background click
-  >
-    <div
-      className="bg-background p-6 rounded-lg max-w-md w-full mx-4 relative"
-      onClick={(e) => e.stopPropagation()} // 👈 Prevent click from bubbling into the background
-    >
+        <div
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+          onClick={handleCloseModal}
+        >
+          <div
+            className="bg-background p-6 rounded-lg max-w-md w-full mx-4 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
               onClick={handleCloseModal}
               className="absolute top-4 right-4 text-accent hover:text-accent/80"
@@ -71,7 +70,12 @@ export default function Hero() {
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
                 </svg>
                 <div>
                   <p className="font-semibold text-white">Phone</p>
@@ -80,7 +84,12 @@ export default function Hero() {
               </div>
               <div className="flex items-center gap-4">
                 <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
                 </svg>
                 <div>
                   <p className="font-semibold text-white">Email</p>
