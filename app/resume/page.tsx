@@ -3,7 +3,7 @@
 import { useState } from 'react';
 
 export default function Resume() {
-  const [view, setView] = useState<'web3' | 'web2'>('web3');
+  const [view, setView] = useState<'web3' | 'web2'>('web2');
 
   const web2Experience = [
     {

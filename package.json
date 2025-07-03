@@ -14,6 +14,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "@headlessui/react": "^2.2.4",
+    "@heroicons/react": "^2.2.0",
+>>>>>>> f131f8f (Update portfolio layout, fixes for mobile and modal interaction)
     "next": "^14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
