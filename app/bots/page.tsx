@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-// Refactored Bots Page to match Resume Page Style
-'use client'
-
-import { useState } from 'react';
-=======
 'use client';
 
 import { useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
->>>>>>> f131f8f (Update portfolio layout, fixes for mobile and modal interaction)
 
 export default function Bots() {
   const bots = [
@@ -24,8 +17,6 @@ export default function Bots() {
       ],
       status: 'Live & Maintained',
       tech: ['Python', 'Playwright', 'pandas', 'Chromium', 'CSV Export', 'Excel Export', 'Browser Automation'],
-<<<<<<< HEAD
-=======
       codeSections: [
         {
           title: '🔧 Imports and Setup',
@@ -170,7 +161,6 @@ else:
     print("❌ No orders found in the specified date range.")`,
         },
       ],
->>>>>>> f131f8f (Update portfolio layout, fixes for mobile and modal interaction)
     },
     {
       name: 'Google Workspace Automation Tools',
@@ -182,9 +172,6 @@ else:
       ],
       status: 'Live & Maintained',
       tech: ['Google Apps Script', 'Google Sheets', 'Google Forms', 'Google Calendar', 'Workflow Automation'],
-<<<<<<< HEAD
-    },
-=======
       codeSections: [
         {
           title: '📅 Calendar Auto-Blocker Script',
@@ -237,7 +224,6 @@ else:
         }
       ]
     }
->>>>>>> f131f8f (Update portfolio layout, fixes for mobile and modal interaction)
   ];
 
   return (
@@ -271,15 +257,6 @@ else:
 
                 <div className="mt-4">
                   <h4 className="font-semibold text-sm mb-2">Tech Stack</h4>
-<<<<<<< HEAD
-                  <div className="flex flex-wrap gap-2">
-                    {bot.tech.map((tech, i) => (
-                      <span key={i} className="status-badge">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-=======
                   <div className="flex flex-wrap gap-2 mb-4">
                     {bot.tech.map((tech, i) => (
                       <span key={i} className="status-badge">{tech}</span>
@@ -318,29 +295,18 @@ else:
                       </>
                     )}
                   </Disclosure>
->>>>>>> f131f8f (Update portfolio layout, fixes for mobile and modal interaction)
                 </div>
               </div>
             </div>
           </div>
         ))}
-<<<<<<< HEAD
-      </div>
-
-      <div className="mt-12 text-center">
-=======
         <div className="mt-12 text-center">
->>>>>>> f131f8f (Update portfolio layout, fixes for mobile and modal interaction)
         <button className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200 transition-colors">
           More coming soon...
         </button>
       </div>
-<<<<<<< HEAD
-    </div>
-=======
       </div>
     </div>
     
->>>>>>> f131f8f (Update portfolio layout, fixes for mobile and modal interaction)
   );
 }
