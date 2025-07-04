@@ -93,7 +93,7 @@ export default function Hero() {
                 </svg>
                 <div>
                   <p className="font-semibold text-white">Email</p>
-                  <p className="text-text-secondary">praveen.mahtani96@gmail.com</p>
+                  <p className="text-text-secondary">praveen@play.bb</p>
                 </div>
               </div>
               <div className="flex items-center justify-center gap-6 pt-4">
