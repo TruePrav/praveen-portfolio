@@ -7,6 +7,19 @@ export default function Resume() {
 
   const web2Experience = [
     {
+      role: 'Technical Operations Manager',
+      company: 'Infinite Technology Inc. (PLAY Barbados)',
+      period: '01/2024 – Present',
+      responsibilities: [
+        'Implemented and managed Freshdesk end-to-end, including staff training, support portal setup, workflows, and a full Knowledge Base.',
+        'Led major improvements to the company’s online presence, including product updates, layout enhancements, and development of a new e-commerce platform for digital sales.',
+        'Managed end-to-end marketing operations, including content planning, growth strategy, team coordination, and performance tracking.',
+        'Introduced automation and AI-driven customer experience enhancements to increase efficiency, reduce manual workload, and improve customer satisfaction.',
+        'Acted as the primary escalation point for complex support cases, resolving high-priority customer and supplier issues quickly and effectively.',
+      ],
+      tools: ['Freshdesk', 'Lightspeed', 'AI Tools', 'Spurnow', 'Wati', 'Slack', 'Google Suite','Fygaro','Canva','Supabase'],
+    },
+    {
       role: 'Technical Support Team Lead',
       company: 'Silverware POS',
       period: '05/2022 – 01/2024',
@@ -42,21 +55,6 @@ export default function Resume() {
         'Handled employee onboarding and offboarding, ensuring secure device setup and account access.',
       ],
       tools: ['Microsoft 365', 'Active Directory', 'SQL'],
-    },
-    {
-      role: 'IT Support Specialist',
-      company: 'Infinite Technology Inc.',
-      period: '07/2020 – Present',
-      responsibilities: [
-        'Designed and launched the company’s e-commerce site, fully integrated with POS systems for real-time inventory and order processing.',
-        'Built and deployed a customer support infrastructure using Freshdesk, including automated workflows and a self-service knowledge base.',
-        'Manage and resolve all incoming support tickets across email, phone, and chat, maintaining fast resolution times and high customer satisfaction.',
-        'Supervise and train staff on newly implemented tools, including the helpdesk platform, website backend, and AI-powered support features.',
-        'Spearheading the adoption of AI tools to streamline internal operations and customer service workflows, significantly improving efficiency.',
-        'Leading development of a new custom website for an additional business function to improve scalability and user experience.',
-        'Handle all customer escalations and serve as the final technical point of contact for unresolved or high-priority issues.',
-      ],
-      tools: ['Freshdesk', 'Lightspeed', 'AI Tools', 'WordPress', 'Spurnow', 'Fygaro'],
     },
   ];
 

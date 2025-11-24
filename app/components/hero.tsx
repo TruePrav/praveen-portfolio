@@ -16,10 +16,9 @@ export default function Hero() {
           {/* Left Column - Text */}
           <div className="space-y-6 text-center md:text-left md:items-start">
             <h1 className="hero-name">Praveen Mahtani</h1>
-            <h2 className="hero-subtitle">IT Specialist | AI & Automation Enthusiast | Web3 Builder</h2>
+            <h2 className="hero-subtitle">IT Specialist | AI Systems & Automation | Customer Experience Optimization | Web3 Builder</h2>
             <h2 className="hero-description">
-              5+ years of experience providing exceptional IT support, optimizing systems, and automating workflows.
-              Passionate about AI, community building, and using technology to solve real-world problems.
+            I use AI and automation to elevate customer experience, making support faster, clearer, and more consistent. With 5+ years in IT, I specialize in removing friction and designing systems people love using.
             </h2>
             <div className="mt-8">
               <button
