@@ -1,14 +1,12 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Footer from './components/footer';
-import Nav from './components/nav';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Praveen Mahtani | Web3 Builder & Automation Consultant',
-  description: 'Community-first Web3 builder and automation consultant based in Toronto',
+  title: 'Praveen Mahtani — AI Systems Builder',
+  description: 'Technical Operations Manager building multi-agent AI systems, automation pipelines, and full-stack products.',
 };
 
 export default function RootLayout({
@@ -18,14 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} bg-background`}>
-        <div className="min-h-screen flex flex-col">
-          <Nav />
-          <main className="flex-1">
-            {children}
-          </main>
-          <Footer />
-        </div>
+      <body className={inter.className} style={{ background: '#0D1117', margin: 0, padding: 0 }}>
+        {children}
       </body>
     </html>
   );

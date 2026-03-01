@@ -2,101 +2,332 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: #1A1A1A;
-    --accent: #FF6A3D;
-    --text-primary: #FFFFFF;
-    --text-secondary: #CCCCCC;
-    --foreground-rgb: 0, 0, 0;
-    --background-rgb: 255, 255, 255;
-  }
-  
-  body {
-    @apply bg-background text-text-secondary;
-    font-family: var(--font-sans);
-    color: rgb(var(--foreground-rgb));
-    background: rgb(var(--background-rgb));
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply text-text-primary font-heading font-bold;
-  }
-  
-  a {
-    @apply text-accent hover:text-accent/80 transition-colors duration-200;
-  }
-  
-  .logo {
-    @apply text-4xl font-heading font-bold text-accent;
-  }
-  
-  .nav-link {
-    @apply text-text-secondary hover:text-accent transition-colors duration-200;
-  }
-  
-  .hero-name {
-    @apply text-7xl font-heading font-bold text-text-primary;
-  }
-  
-  .hero-subtitle {
-    @apply text-2xl font-heading font-bold text-text-primary;
-  }
-  
-  .cta-button {
-    @apply bg-accent text-white px-8 py-4 rounded-full font-semibold hover:bg-accent/90 transition-all duration-200;
-  }
-  
-  .timeline-dot {
-    @apply w-4 h-4 rounded-full bg-accent;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ─── Design Tokens ─────────────────────────────────────── */
+:root {
+  --bg: #0D1117;
+  --bg-card: rgba(22, 27, 34, 0.75);
+  --border: rgba(34, 211, 238, 0.12);
+  --border-hover: rgba(34, 211, 238, 0.35);
+  --accent: #22D3EE;
+  --purple: #8B5CF6;
+  --gradient: linear-gradient(135deg, #22D3EE, #8B5CF6, #3B82F6);
+  --gradient-text: linear-gradient(90deg, #22D3EE 0%, #8B5CF6 50%, #60A5FA 100%);
+  --text-primary: #F0F6FC;
+  --text-secondary: #8B949E;
+  --glow-cyan: 0 0 30px rgba(34, 211, 238, 0.15);
+  --glow-purple: 0 0 30px rgba(139, 92, 246, 0.15);
 }
 
-@layer components {
-  .card {
-    @apply bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-300;
-  }
-
-  .section-title {
-    @apply text-2xl font-bold mb-8 text-gray-800;
-  }
-
-  .link {
-    @apply text-primary-500 hover:text-primary-600 transition-colors;
-  }
-
-  .button {
-    @apply px-4 py-2 rounded-md text-sm font-medium transition-all duration-200;
-  }
-
-  .button-primary {
-    @apply bg-primary-500 text-white hover:bg-primary-600;
-  }
-
-  .button-secondary {
-    @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
-  }
+/* ─── Base ──────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
-@layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.5s ease-in-out;
-  }
+html {
+  scroll-behavior: smooth;
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+body {
+  background-color: var(--bg);
+  color: var(--text-secondary);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
 
-  .sm:grid-cols-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--text-primary);
+  font-weight: 700;
+}
 
-  .lg:grid-cols-3 {
-    grid-template-columns: repeat(3, 1fr);
+/* ─── Animated Mesh Background ──────────────────────────── */
+.mesh-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.mesh-bg::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
+  top: -150px;
+  right: -100px;
+  animation: floatOrb1 12s ease-in-out infinite;
+}
+
+.mesh-bg::after {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+  bottom: -100px;
+  left: -100px;
+  animation: floatOrb2 15s ease-in-out infinite;
+}
+
+@keyframes floatOrb1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-40px, 30px) scale(1.05); }
+  66% { transform: translate(30px, -20px) scale(0.95); }
+}
+
+@keyframes floatOrb2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.05); }
+  66% { transform: translate(-30px, 20px) scale(0.95); }
+}
+
+/* Grid lines overlay */
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridScroll 25s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gridScroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+
+/* ─── Glassmorphism ─────────────────────────────────────── */
+.glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.glass:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--glow-cyan);
+}
+
+.glass-purple:hover {
+  border-color: rgba(139, 92, 246, 0.35);
+  box-shadow: var(--glow-purple);
+}
+
+/* ─── Gradient Text ─────────────────────────────────────── */
+.gradient-text {
+  background: var(--gradient-text);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textShimmer 4s linear infinite;
+}
+
+@keyframes textShimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── Section reveal ────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Status dot ────────────────────────────────────────── */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);
+  display: inline-block;
+  flex-shrink: 0;
+  animation: pulseDotAnim 2s ease-in-out infinite;
+}
+
+@keyframes pulseDotAnim {
+  0%, 100% { box-shadow: 0 0 6px rgba(34, 197, 94, 0.7); opacity: 1; }
+  50% { box-shadow: 0 0 14px rgba(34, 197, 94, 0.4); opacity: 0.75; }
+}
+
+/* ─── Gradient CTA Button ───────────────────────────────── */
+.btn-gradient {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  color: #fff;
+  background: linear-gradient(135deg, #22D3EE, #8B5CF6);
+  background-size: 200% auto;
+  border: none;
+  cursor: pointer;
+  transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-gradient:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(34, 211, 238, 0.3), 0 4px 15px rgba(139, 92, 246, 0.2);
+  color: #fff;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--accent);
+  background: transparent;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background: rgba(34, 211, 238, 0.08);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  color: var(--accent);
+}
+
+/* ─── Skill tags ────────────────────────────────────────── */
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: rgba(22, 27, 34, 0.6);
+  color: var(--text-secondary);
+  transition: all 0.25s ease;
+  cursor: default;
+}
+
+.skill-tag:hover {
+  border-color: var(--border-hover);
+  color: var(--accent);
+  background: rgba(34, 211, 238, 0.06);
+  transform: translateY(-1px);
+}
+
+/* ─── Section headings ──────────────────────────────────── */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  line-height: 1.2;
+}
+
+/* ─── Nav ───────────────────────────────────────────────── */
+.nav-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+/* ─── Logo ──────────────────────────────────────────────── */
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  background: linear-gradient(90deg, #22D3EE, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Tech tags ─────────────────────────────────────────── */
+.tech-tag {
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  background: rgba(34, 211, 238, 0.08);
+  color: #22D3EE;
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  font-family: 'Inter', monospace;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.2);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.4);
+}
+
+/* ─── Section spacing ───────────────────────────────────── */
+.section {
+  padding: 96px 0;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 0;
   }
 }

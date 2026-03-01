@@ -7,22 +7,33 @@ export default function Resume() {
 
   const web2Experience = [
     {
+      role: 'AI Engineer',
+      company: 'Independent / Freelance',
+      period: '01/2024 - Present',
+      responsibilities: [
+        'Architected and shipped Digisales (digisales.ca) — a D2C digital gift card platform built on Next.js and Supabase, with AI-powered customer support via autonomous agents handling real-time code delivery.',
+        'Built autonomous trading infrastructure (Degen) on Polymarket using Python, Polygon/USDC, and ICT methodology — live prediction market trading bot with conviction scoring and risk management.',
+        'Engineered Greenbox Barbados (greenboxbarbados.com) — full-stack platform for a 100% vegan food delivery business in Barbados, built on Next.js with online ordering, delivery management, and AI-assisted operations.',
+        'Designed and deployed Alfred — a custom AI personal assistant trained on personal business context, operating 24/7 as a fully autonomous ops partner across PLAY Barbados and personal projects.',
+      ],
+      tools: ['Python', 'Next.js', 'Supabase', 'PostgreSQL', 'LangChain', 'LangGraph', 'OpenClaw', 'Polygon/Web3', 'AI Agents', 'Vercel'],
+    },
+    {
       role: 'Technical Operations Manager',
       company: 'Infinite Technology Inc. (PLAY Barbados)',
-      period: '01/2024 – Present',
+      period: '01/2024 - Present',
       responsibilities: [
+        'Built and deployed a multi-agent AI network (PLAYMaster, Scout, Ledger, Codex) using LangChain, LangGraph, and OpenClaw — automating 40%+ of daily ops tasks including sales reconciliation, customer support, and content generation.',
         'Implemented and managed Freshdesk end-to-end, including staff training, support portal setup, workflows, and a full Knowledge Base.',
-        'Led major improvements to the company’s online presence, including product updates, layout enhancements, and development of a new e-commerce platform for digital sales.',
-        'Managed end-to-end marketing operations, including content planning, growth strategy, team coordination, and performance tracking.',
-        'Introduced automation and AI-driven customer experience enhancements to increase efficiency, reduce manual workload, and improve customer satisfaction.',
-        'Acted as the primary escalation point for complex support cases, resolving high-priority customer and supplier issues quickly and effectively.',
+        'Led Lightspeed POS integration with Counterpoint SQL — built custom reconciliation pipeline syncing 2 locations and Google Sheets reporting.',
+        'Managed marketing operations including content strategy, AI-powered social media (TikTok/Instagram), and digital growth initiatives.',
       ],
-      tools: ['Freshdesk', 'Lightspeed', 'AI Tools', 'Spurnow', 'Wati', 'Slack', 'Google Suite','Fygaro','Canva','Supabase'],
+      tools: ['Python', 'Node.js', 'LangChain', 'LangGraph', 'OpenClaw', 'Google Sheets API', 'Lightspeed', 'Counterpoint SQL', 'Freshdesk', 'AI Automation'],
     },
     {
       role: 'Technical Support Team Lead',
       company: 'Silverware POS',
-      period: '05/2022 – 01/2024',
+      period: '05/2022 - 01/2024',
       responsibilities: [
         'Promoted from Analyst role due to strong performance and leadership ability.',
         'Led complex client support cases across phone, chat, and email for 500+ business accounts.',
@@ -34,7 +45,7 @@ export default function Resume() {
     {
       role: 'Technical Support Analyst',
       company: 'Silverware POS',
-      period: '11/2021 – 05/2022',
+      period: '11/2021 - 05/2022',
       responsibilities: [
         'Provided frontline support for POS and back-office systems in a fast-paced SaaS environment.',
         'Diagnosed and resolved technical issues remotely, using Zendesk and remote access tools.',
@@ -46,7 +57,7 @@ export default function Resume() {
     {
       role: 'IT Coordinator',
       company: 'Green & Spiegel',
-      period: '11/2019 – 07/2020',
+      period: '11/2019 - 07/2020',
       responsibilities: [
         'Delivered first-line support to 120+ professionals, resolving access, software, and technical issues across multiple platforms.',
         'Managed user provisioning, license control, and access escalations in Microsoft 365 and internal CRM tools.',
@@ -62,7 +73,7 @@ export default function Resume() {
     {
       role: 'Collab Manager',
       company: 'EHive',
-      period: '04/2024 – Present',
+      period: '04/2024 - Present',
       responsibilities: [
         'Organized and hosted AMAs to educate the EHive community about new Web3 projects.',
         'Facilitated cross-community collaborations to expand outreach and network strength.',
@@ -74,7 +85,7 @@ export default function Resume() {
     {
       role: 'Moderator',
       company: 'Jen AI',
-      period: '11/2024 – 01/2025',
+      period: '11/2024 - 01/2025',
       responsibilities: [
         'Encouraged users to try the app and guided them on usability.',
         'Collected user feedback and reported bugs to improve the app.',
@@ -87,7 +98,7 @@ export default function Resume() {
     {
       role: 'Collab/Community Manager',
       company: 'The Tribe',
-      period: '01/2022 – 12/2024',
+      period: '01/2022 - 12/2024',
       responsibilities: [
         'Secured 6,000+ whitelist spots, delivering 50+ ETH in potential profits.',
         'Managed partnership tracking and executed collaborations.',
@@ -99,7 +110,7 @@ export default function Resume() {
     {
       role: 'Project Manager',
       company: 'Artamei',
-      period: '10/2022 – 03/2023',
+      period: '10/2022 - 03/2023',
       responsibilities: [
         'Managed final whitelist sheets and ensured all data was captured.',
         'Provided pre-mint strategy advice to the founder.',
@@ -172,7 +183,7 @@ export default function Resume() {
         ))}
       </div>
 
-    
+
     </div>
   );
 }

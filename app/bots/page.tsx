@@ -6,6 +6,62 @@ import { ChevronUpIcon } from '@heroicons/react/20/solid';
 export default function Bots() {
   const bots = [
     {
+      name: 'Alfred — AI Operations Agent',
+      description: 'Autonomous AI agent running on OpenClaw that orchestrates daily ops for PLAY Barbados and personal projects. Handles memory, scheduling, proactive alerts, and multi-agent coordination.',
+      features: [
+        'Proactive heartbeat system — monitors context, logs, and active tasks every 30 minutes',
+        'Long-term memory architecture with daily logs, curated MEMORY.md index, and on-demand recall',
+        'Orchestrates sub-agents: Linda (content), Ledger (reconciliation), Scout (support), Codex (builds)',
+        'Inline Telegram buttons for one-tap actions: status check, cron list, task triggers',
+        'Self-improvement cron: nightly review of logs → updates ADVISORY.md and MASTER-TODO.md',
+      ],
+      status: 'Live & Active',
+      tech: ['OpenClaw', 'Claude Sonnet 4.6', 'Telegram Bot API', 'Node.js', 'PowerShell', 'Cron Jobs'],
+      codeSections: [],
+    },
+    {
+      name: 'Scout — AI Customer Support Agent',
+      description: 'LangChain ReAct agent deployed on Telegram for PLAY Barbados customer support. Handles gift card redemption issues, region policy checks, stock inquiries, and escalation routing.',
+      features: [
+        'Knowledge base search across 15+ gift card platforms (PSN, Xbox, Roblox, Nintendo, Steam, etc.)',
+        'Customer memory via Supabase — remembers repeat customers and prior issue history',
+        'Automatic escalation routing: region mismatches, high-value disputes, fraud flags → Telegram alert',
+        'Eval-driven development: 44 test cases, continuous pass rate tracking via LangSmith',
+        'Region policy enforcement — prevents incorrect purchases with real-time policy checks',
+      ],
+      status: 'Live & In Testing',
+      tech: ['Python', 'LangChain', 'LangGraph', 'Grok', 'Supabase', 'Telegram Bot API', 'LangSmith'],
+      codeSections: [],
+    },
+    {
+      name: 'Ledger — Daily Sales Reconciliation Agent',
+      description: 'Automated daily reconciliation pipeline that syncs Counterpoint POS data, OffGamers supplier orders, and Google Sheets — runs every morning at 8 AM EST without human intervention.',
+      features: [
+        'Pulls gift card sales from Counterpoint SQL (MSSQL via pyodbc) across 2 store locations',
+        'Fetches OffGamers supplier order data and matches by denomination and brand',
+        'Generates 3-section daily report: sales summary, variance analysis, recon status',
+        'Writes directly to Google Sheets with full formatting via Sheets API',
+        'Sends Telegram notification to Praveen with daily summary on completion',
+      ],
+      status: 'Live & Running Daily',
+      tech: ['Python', 'LangChain', 'pyodbc', 'MSSQL', 'Google Sheets API', 'Telegram Bot API', 'Cron'],
+      codeSections: [],
+    },
+    {
+      name: 'Degen — Autonomous Prediction Market Trader',
+      description: 'Autonomous 15-minute trading loop on Polymarket using USDC on Polygon. Applies ICT methodology and conviction scoring to identify mispriced prediction markets and trade them algorithmically.',
+      features: [
+        'Scans Polymarket every 15 minutes across crypto, politics, and sports markets',
+        'ICT-inspired conviction scoring (0–12): liquidity, volume trend, resolution rate, price momentum',
+        'Entry filter: YES at 10–40% probability only — no 50/50 coin flips ever',
+        'Position management: 50% exit at 50¢, runner to 90¢, hard daily loss limit ($50 USDC)',
+        'Real-time Telegram alerts on every buy/sell with P&L tracking and daily summaries',
+      ],
+      status: 'Live — First Trades Launching',
+      tech: ['Python', 'Polygon', 'USDC', 'py-clob-client', 'Polymarket API', 'Telegram Bot API', 'Web3'],
+      codeSections: [],
+    },
+    {
       name: 'PLAY Barbados (Infinite Technology) Scraper Bot',
       description: 'Automated digital product purchase tracker and reconciliation system',
       features: [
