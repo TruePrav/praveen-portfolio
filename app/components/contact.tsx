@@ -194,7 +194,7 @@ export default function Contact() {
             opacity: 0.6,
           }}
         >
-          © {new Date().getFullYear()} Praveen Mahtani · Barbados 🇧🇧
+          © {new Date().getFullYear()} Praveen Mahtani
         </div>
       </div>
     </section>

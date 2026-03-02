@@ -173,7 +173,7 @@ export default function Hero() {
                 maxWidth: '480px',
               }}
             >
-              Technical Operations Manager at PLAY Barbados. I design multi-agent AI
+              Technical Operations Manager building multi-agent AI systems. I design
               networks that automate ops, customer support, reconciliation, and content —
               running 24/7 across Telegram, Discord, and the web.
             </p>

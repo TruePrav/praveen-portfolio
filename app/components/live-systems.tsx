@@ -7,7 +7,7 @@ const agents = [
     pid: '1001',
     name: 'alfred',
     displayName: 'Alfred',
-    role: 'Orchestrator · PLAY Barbados ops via Telegram',
+    role: 'Orchestrator · multi-agent ops via Telegram',
     stat: '100+ tasks/month',
     status: 'active',
     color: '#22D3EE',

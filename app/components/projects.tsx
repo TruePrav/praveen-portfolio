@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 const projects = [
   {
     title: 'PLAY Agent Network',
-    tag: 'Production · PLAY Barbados',
+    tag: 'Production · Gaming Retail',
     description:
       'Multi-agent AI system running Alfred (orchestrator), Scout (support), Ledger (reconciliation), and Linda (content) — fully automated ops for a family gaming retail business.',
     impact: [
@@ -22,11 +22,11 @@ const projects = [
     title: 'ailevelup.ca',
     tag: 'Live · AI Consulting',
     description:
-      'AI consulting platform for Caribbean SMBs. Helping small businesses adopt automation, AI agents, and digital tools — without needing a technical team.',
+      'AI automation platform for small and medium businesses. Deploys custom AI agents for customer support, reconciliation, and content — without requiring a technical team.',
     impact: [
-      'Targeting Caribbean market',
-      'SMB-focused AI adoption',
-      'Done-for-you automation',
+      'Global SMB market',
+      'Done-for-you AI deployment',
+      'Live agents, not templates',
     ],
     stack: ['Next.js', 'Tailwind', 'Node.js', 'OpenAI API', 'Vercel'],
     accent: '#8B5CF6',
@@ -37,7 +37,7 @@ const projects = [
     title: 'Digisales',
     tag: 'Internal · E-commerce',
     description:
-      'Custom digital storefront for PLAY Barbados enabling online gift card and digital product sales — replacing manual processes with a fully automated fulfillment pipeline.',
+      'Custom digital storefront for a family gaming retail business enabling online gift card and digital product sales — replacing manual processes with a fully automated fulfillment pipeline.',
     impact: [
       'Automated digital fulfillment',
       'Integrated with Lightspeed POS',
