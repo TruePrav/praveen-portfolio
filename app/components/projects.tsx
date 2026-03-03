@@ -22,13 +22,13 @@ const projects = [
     title: 'ailevelup.ca',
     tag: 'Live · AI Consulting',
     description:
-      'AI automation platform for small and medium businesses. Deploys custom AI agents for customer support, reconciliation, and content — without requiring a technical team.',
+      'AI automation platform for small and medium businesses. Deploys custom AI agents across every business function — customer support, finance, sales, operations, marketing, HR, and content — without requiring a technical team.',
     impact: [
       'Global SMB market',
       'Done-for-you AI deployment',
       'Live agents, not templates',
     ],
-    stack: ['Next.js', 'Tailwind', 'Node.js', 'OpenAI API', 'Vercel'],
+    stack: ['Next.js', 'Tailwind', 'Node.js', 'Anthropic', 'Grok', 'Vercel'],
     accent: '#8B5CF6',
     glow: 'rgba(139,92,246,0.06)',
     number: '02',
@@ -84,7 +84,7 @@ export default function Projects() {
         </div>
 
         {/* Project cards */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', marginBottom: '48px' }}>
           {projects.map((project, i) => (
             <div
               key={project.title}
@@ -243,6 +243,130 @@ export default function Projects() {
             </div>
           ))}
         </div>
+        {/* Business Agents — Deployed */}
+        <div className="reveal" style={{ marginTop: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+            <div style={{ height: '1px', flex: 1, background: 'rgba(255,255,255,0.06)' }} />
+            <span style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: '0.7rem',
+              fontWeight: 600,
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'rgba(34,211,238,0.5)',
+            }}>
+              Deployed Agents
+            </span>
+            <div style={{ height: '1px', flex: 1, background: 'rgba(255,255,255,0.06)' }} />
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+            gap: '16px',
+          }}>
+            {[
+              {
+                name: 'Scout',
+                color: '#22D3EE',
+                function: 'Customer Support',
+                desc: 'Handles customer inquiries 24/7 — product questions, issue resolution, escalation routing, and region policy enforcement. Learns the business and improves over time.',
+                metrics: '95% accuracy · <1 min response',
+                module: 'support.handler',
+              },
+              {
+                name: 'Ledger',
+                color: '#8B5CF6',
+                function: 'Finance & Reconciliation',
+                desc: 'Pulls sales data from POS systems, matches against supplier invoices, flags discrepancies, and delivers a formatted daily report. Runs automatically every morning.',
+                metrics: '$50K+/month tracked · daily',
+                module: 'finance.reconcile',
+              },
+              {
+                name: 'Linda',
+                color: '#22D3EE',
+                function: 'Content Intelligence',
+                desc: 'Monitors trending topics across social platforms, researches competitor content, and surfaces daily post ideas with engagement context. Outputs ready-to-review drafts.',
+                metrics: '18 ideas/day · multi-platform',
+                module: 'content.megaphone',
+              },
+              {
+                name: 'Ranger',
+                color: '#8B5CF6',
+                function: 'Digital Sales Support',
+                desc: 'Supports the digital storefront — handles product questions, delivery status, redemption issues, and auto-escalates edge cases to a human. Integrated with the e-commerce backend.',
+                metrics: '98%+ eval accuracy',
+                module: 'sales.digital',
+              },
+            ].map((agent) => (
+              <div
+                key={agent.name}
+                className="reveal"
+                style={{
+                  padding: '24px',
+                  borderRadius: '14px',
+                  background: 'rgba(5,12,20,0.6)',
+                  border: '1px solid rgba(255,255,255,0.06)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+                <div style={{
+                  position: 'absolute', top: 0, left: 0, right: 0, height: '1px',
+                  background: `linear-gradient(90deg, transparent, ${agent.color}40, transparent)`,
+                }} />
+
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '12px' }}>
+                  <div>
+                    <div style={{
+                      fontFamily: "'JetBrains Mono', 'Fira Code', monospace",
+                      fontSize: '0.85rem',
+                      fontWeight: 600,
+                      color: agent.color,
+                      marginBottom: '2px',
+                    }}>{agent.name.toLowerCase()}</div>
+                    <div style={{
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontSize: '0.65rem',
+                      fontWeight: 600,
+                      letterSpacing: '0.1em',
+                      textTransform: 'uppercase',
+                      color: 'rgba(255,255,255,0.35)',
+                    }}>{agent.function}</div>
+                  </div>
+                  <span style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: '0.6rem',
+                    color: 'rgba(34,197,94,0.7)',
+                    padding: '2px 8px',
+                    borderRadius: '4px',
+                    background: 'rgba(34,197,94,0.08)',
+                    border: '1px solid rgba(34,197,94,0.15)',
+                  }}>ACTIVE</span>
+                </div>
+
+                <p style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: '0.8rem',
+                  color: 'rgba(255,255,255,0.5)',
+                  lineHeight: 1.6,
+                  marginBottom: '14px',
+                }}>{agent.desc}</p>
+
+                <div style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontSize: '0.65rem',
+                  color: `${agent.color}80`,
+                  paddingTop: '12px',
+                  borderTop: '1px solid rgba(255,255,255,0.05)',
+                }}>{agent.metrics}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );

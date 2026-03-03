@@ -7,7 +7,7 @@ const agents = [
     pid: '1001',
     name: 'alfred',
     displayName: 'Alfred',
-    role: 'Orchestrator · multi-agent ops via Telegram',
+    role: 'Personal orchestrator · memory, scheduling, proactive ops',
     stat: '100+ tasks/month',
     status: 'active',
     color: '#22D3EE',
@@ -16,43 +16,21 @@ const agents = [
   },
   {
     pid: '1002',
-    name: 'scout',
-    displayName: 'Scout',
-    role: 'Customer support · Telegram & Discord',
-    stat: '95% accuracy',
-    status: 'active',
-    color: '#8B5CF6',
-    uptime: '99.1%',
-    module: 'support.handler',
-  },
-  {
-    pid: '1003',
-    name: 'ledger',
-    displayName: 'Ledger',
-    role: 'Daily reconciliation · financial reporting',
-    stat: '$50K+/month tracked',
-    status: 'active',
-    color: '#22D3EE',
-    uptime: '100%',
-    module: 'finance.reconcile',
-  },
-  {
-    pid: '1004',
     name: 'linda',
     displayName: 'Linda',
-    role: 'Content intelligence · social media research',
+    role: 'Content intelligence · trend research & social drafts',
     stat: '18 ideas/day',
     status: 'active',
     color: '#8B5CF6',
     uptime: '98.5%',
-    module: 'content.generator',
+    module: 'content.megaphone',
   },
   {
-    pid: '1005',
+    pid: '1003',
     name: 'degen',
     displayName: 'Degen',
-    role: 'Autonomous Polymarket prediction trading bot',
-    stat: 'Live on Polymarket',
+    role: 'Autonomous prediction market trader · Polymarket',
+    stat: 'Live on Polygon',
     status: 'building',
     color: '#22C55E',
     uptime: 'beta',
@@ -88,7 +66,7 @@ export default function LiveSystems() {
           <p className="section-label mb-3">LIVE SYSTEMS</p>
           <h2 className="section-title mb-4">What&apos;s running right now</h2>
           <p style={{ color: 'var(--text-secondary)', maxWidth: '520px', lineHeight: 1.7 }}>
-            A network of autonomous AI agents handling real business ops — 24/7, no supervision required.
+            Personal AI agents I run daily — orchestration, content intelligence, and autonomous trading. Business agents are deployed separately for clients.
           </p>
         </div>
 
@@ -147,7 +125,7 @@ export default function LiveSystems() {
                 letterSpacing: '0.06em',
               }}
             >
-              agent-status --network play-bb --watch
+              agent-status --personal --watch
             </div>
 
             {/* Live indicator */}
@@ -348,7 +326,7 @@ export default function LiveSystems() {
                 color: 'rgba(34,211,238,0.5)',
               }}
             >
-              5 agents running · 4 active · 1 building
+              3 personal agents · 2 active · 1 building
             </span>
             <span
               style={{
@@ -358,7 +336,7 @@ export default function LiveSystems() {
                 color: 'rgba(255,255,255,0.15)',
               }}
             >
-              network: play-bb-prod
+              host: personal
             </span>
           </div>
         </div>

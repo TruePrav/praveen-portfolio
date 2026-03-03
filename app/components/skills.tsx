@@ -7,7 +7,7 @@ const skillGroups = [
     category: 'AI & Agents',
     icon: '🤖',
     color: '#22D3EE',
-    skills: ['LangChain', 'OpenAI API', 'OpenClaw', 'Multi-Agent Systems', 'Prompt Engineering', 'RAG'],
+    skills: ['LangChain', 'Anthropic Claude', 'OpenAI', 'Google Gemini', 'Grok / xAI', 'OpenClaw', 'Multi-Agent Systems', 'Prompt Engineering', 'RAG', 'MCP'],
   },
   {
     category: 'Backend',

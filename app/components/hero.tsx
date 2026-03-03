@@ -175,7 +175,7 @@ export default function Hero() {
             >
               Technical Operations Manager building multi-agent AI systems. I design
               networks that automate ops, customer support, reconciliation, and content —
-              running 24/7 across Telegram, Discord, and the web.
+              running 24/7. I interact with them through Telegram, Discord, WhatsApp, and the web.
             </p>
 
             {/* CTAs */}
