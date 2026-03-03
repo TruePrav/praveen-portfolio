@@ -194,7 +194,7 @@ export default function Hero() {
             {/* Stats row */}
             <div className="flex gap-8 pt-4">
               {[
-                { value: '8', label: 'AI Agents Live' },
+                { value: '10+', label: 'AI Agents Live' },
                 { value: '5+', label: 'Years Building' },
                 { value: '24/7', label: 'Automated Ops' },
               ].map((stat) => (

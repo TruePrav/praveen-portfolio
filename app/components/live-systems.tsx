@@ -7,8 +7,8 @@ const agents = [
     pid: '1001',
     name: 'alfred',
     displayName: 'Alfred',
-    role: 'Personal orchestrator · memory, scheduling, proactive ops',
-    stat: '100+ tasks/month',
+    role: 'Orchestrator + ops - manages everything, routes tasks, maintains memory',
+    stat: 'Ops control',
     status: 'active',
     color: '#22D3EE',
     uptime: '99.8%',
@@ -18,8 +18,8 @@ const agents = [
     pid: '1002',
     name: 'linda',
     displayName: 'Linda',
-    role: 'Content intelligence · trend research & social drafts',
-    stat: '18 ideas/day',
+    role: 'Content research - daily trending scrape, 7-day calendar, Sheets + Telegram brief',
+    stat: 'Daily brief',
     status: 'active',
     color: '#8B5CF6',
     uptime: '98.5%',
@@ -27,21 +27,65 @@ const agents = [
   },
   {
     pid: '1003',
+    name: 'jax',
+    displayName: 'Jax',
+    role: 'Video production - tags clips, writes hooks/scripts, formats for TikTok/IG/X',
+    stat: 'Clip engine',
+    status: 'active',
+    color: '#F97316',
+    uptime: '98.9%',
+    module: 'content.video',
+  },
+  {
+    pid: '1004',
+    name: 'lux',
+    displayName: 'Lux',
+    role: 'Career strategy - resume optimization and job hunting workflows',
+    stat: 'Resume ops',
+    status: 'building',
+    color: '#A78BFA',
+    uptime: 'pending',
+    module: 'career.strategy',
+  },
+  {
+    pid: '1005',
+    name: 'popeye',
+    displayName: 'Popeye',
+    role: 'Health & fitness - meal plans, workout programming, macros, check-ins',
+    stat: 'Daily plans',
+    status: 'active',
+    color: '#22C55E',
+    uptime: '99.0%',
+    module: 'health.coach',
+  },
+  {
+    pid: '1006',
     name: 'zero',
     displayName: 'Zero',
-    role: 'Full-stack dev agent · builds sites, apps, and automations on demand',
-    stat: 'PTY session',
+    role: 'Full-stack dev - frontend, UI, client sites, WhatsApp integration',
+    stat: 'Build queue',
     status: 'active',
-    color: '#F59E0B',
+    color: '#EAB308',
     uptime: '99.1%',
     module: 'dev.fullstack',
   },
   {
-    pid: '1004',
+    pid: '1007',
+    name: 'architect',
+    displayName: 'Architect',
+    role: 'Backend dev + infra - Python services, APIs, and server builds',
+    stat: 'Infra build',
+    status: 'active',
+    color: '#60A5FA',
+    uptime: '99.2%',
+    module: 'dev.backend',
+  },
+  {
+    pid: '1008',
     name: 'degen',
     displayName: 'Degen',
-    role: 'Autonomous prediction market trader · Polymarket on Polygon',
-    stat: 'Wallet live',
+    role: 'Autonomous Polymarket trader - ICT strategy, YES 10:30 contracts',
+    stat: 'Dry-run pass',
     status: 'building',
     color: '#22C55E',
     uptime: 'beta',
@@ -51,6 +95,8 @@ const agents = [
 
 export default function LiveSystems() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const activeAgents = agents.filter((agent) => agent.status === 'active').length;
+  const buildingAgents = agents.length - activeAgents;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -69,43 +115,17 @@ export default function LiveSystems() {
     return () => observer.disconnect();
   }, []);
 
-  const clientDeployments = [
-    {
-      type: 'Gaming Retail',
-      count: 6,
-      departments: ['Customer Support', 'Finance & Reconciliation', 'Content Intelligence', 'Sales Analytics', 'HR & Training', 'Operations'],
-      stack: ['Python', 'LangChain', 'OpenClaw', 'Telegram', 'Discord'],
-      color: '#22D3EE',
-    },
-    {
-      type: 'Digital Commerce',
-      count: 4,
-      departments: ['Sales Orchestration', 'Order Fulfillment', 'Product Knowledge', 'Customer Support'],
-      stack: ['Python', 'LangChain', 'REST APIs', 'Discord'],
-      color: '#F97316',
-    },
-    {
-      type: 'Vegan Catering (In Progress)',
-      count: '4+',
-      departments: ['Customer Support', 'Finance', 'Operations', 'Content'],
-      stack: ['OpenClaw', 'LangChain', 'Next.js'],
-      color: '#22C55E',
-    },
-  ];
-
   return (
     <section className="section" ref={sectionRef} id="agents">
       <div className="container mx-auto px-6 max-w-6xl">
-        {/* Header */}
         <div className="reveal mb-12">
-          <p className="section-label mb-3">LIVE SYSTEMS</p>
-          <h2 className="section-title mb-4">What&apos;s running right now</h2>
+          <p className="section-label mb-3">PASSION PROJECTS</p>
+          <h2 className="section-title mb-4">Personal Agent Command Center</h2>
           <p style={{ color: 'var(--text-secondary)', maxWidth: '520px', lineHeight: 1.7 }}>
-            Personal AI agents I run daily — orchestration, content intelligence, dev, and autonomous trading. Business agents are deployed separately for clients.
+            Personal AI agents I run daily - orchestration, content intelligence, dev, and autonomous trading.
           </p>
         </div>
 
-        {/* Terminal console panel */}
         <div
           className="reveal"
           style={{
@@ -119,7 +139,6 @@ export default function LiveSystems() {
             position: 'relative',
           }}
         >
-          {/* Scanline overlay */}
           <div
             style={{
               position: 'absolute',
@@ -131,7 +150,6 @@ export default function LiveSystems() {
             }}
           />
 
-          {/* Terminal top bar */}
           <div
             style={{
               display: 'flex',
@@ -158,7 +176,6 @@ export default function LiveSystems() {
             </div>
           </div>
 
-          {/* Column headers */}
           <div style={{ display: 'grid', gridTemplateColumns: '60px 120px 1fr 110px 90px 80px', gap: '12px', padding: '10px 20px', borderBottom: '1px solid rgba(255,255,255,0.04)', position: 'relative', zIndex: 1 }}>
             {['PID', 'NAME', 'ROLE', 'METRIC', 'UPTIME', 'STATUS'].map((col) => (
               <span key={col} style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.65rem', color: 'rgba(34,211,238,0.4)', letterSpacing: '0.1em', fontWeight: 600 }}>
@@ -167,7 +184,6 @@ export default function LiveSystems() {
             ))}
           </div>
 
-          {/* Agent rows */}
           <div style={{ position: 'relative', zIndex: 1 }}>
             {agents.map((agent, i) => (
               <div
@@ -184,8 +200,12 @@ export default function LiveSystems() {
                   animation: agent.status === 'active' ? `rowGlow${i % 2 === 0 ? 'A' : 'B'} 4s ease-in-out infinite` : 'none',
                   animationDelay: `${i * 0.8}s`,
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.background = 'rgba(34,211,238,0.03)'; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.background = 'transparent'; }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.background = 'rgba(34,211,238,0.03)';
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLDivElement).style.background = 'transparent';
+                }}
               >
                 <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)' }}>{agent.pid}</span>
                 <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.85rem', fontWeight: 600, color: agent.color, letterSpacing: '0.02em' }}>{agent.name}</span>
@@ -202,70 +222,14 @@ export default function LiveSystems() {
             ))}
           </div>
 
-          {/* Terminal footer */}
           <div style={{ padding: '12px 20px', borderTop: '1px solid rgba(34,211,238,0.08)', background: 'rgba(34,211,238,0.02)', display: 'flex', alignItems: 'center', gap: '8px', position: 'relative', zIndex: 1 }}>
             <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.7rem', color: 'rgba(34,211,238,0.4)' }}>$</span>
             <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.7rem', color: 'rgba(34,211,238,0.5)' }}>
-              4 personal agents · 3 active · 1 building
+              {agents.length} personal agents | {activeAgents} active | {buildingAgents} building
             </span>
             <span style={{ marginLeft: 'auto', fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.65rem', color: 'rgba(255,255,255,0.15)' }}>host: personal</span>
           </div>
         </div>
-      {/* ── Client Deployments ─────────────────────────────────────────── */}
-      <div className="reveal" style={{ marginTop: '48px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-          <div style={{ height: '1px', flex: 1, background: 'rgba(255,255,255,0.06)' }} />
-          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(34,211,238,0.5)' }}>
-            Client Deployments
-          </span>
-          <div style={{ height: '1px', flex: 1, background: 'rgba(255,255,255,0.06)' }} />
-        </div>
-
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '16px' }}>
-          {clientDeployments.map((client) => (
-            <div
-              key={client.type}
-              className="reveal"
-              style={{ padding: '24px', borderRadius: '14px', background: 'rgba(5,12,20,0.6)', border: '1px solid rgba(255,255,255,0.06)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', position: 'relative', overflow: 'hidden' }}
-            >
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: `linear-gradient(90deg, transparent, ${client.color}40, transparent)` }} />
-
-              {/* Header row */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-                <div>
-                  <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '2px' }}>
-                    {client.type}
-                  </div>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.7rem', color: client.color }}>
-                    {client.count} agents deployed
-                  </div>
-                </div>
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.65rem', color: 'rgba(34,197,94,0.7)', padding: '3px 10px', borderRadius: '4px', background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.15)' }}>
-                  {client.type.includes('Progress') ? 'BUILDING' : 'LIVE'}
-                </div>
-              </div>
-
-              {/* Departments */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '14px' }}>
-                {client.departments.map((dept) => (
-                  <span key={dept} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.68rem', padding: '3px 10px', borderRadius: '20px', color: client.color, background: `${client.color}10`, border: `1px solid ${client.color}25` }}>
-                    {dept}
-                  </span>
-                ))}
-              </div>
-
-              {/* Stack */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                {client.stack.map((tech) => (
-                  <span key={tech} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.62rem', color: 'rgba(255,255,255,0.3)', padding: '2px 7px', borderRadius: '3px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
       </div>
 
       <style jsx>{`

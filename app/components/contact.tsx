@@ -142,9 +142,19 @@ export default function Contact() {
               <div style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-secondary)', fontFamily: "'Space Grotesk', sans-serif", marginBottom: '2px' }}>
                 Email
               </div>
-              <div style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text-primary)', fontFamily: "'Space Grotesk', sans-serif" }}>
+              <a
+                href={`mailto:${EMAIL}`}
+                style={{
+                  fontSize: '0.9rem',
+                  fontWeight: 500,
+                  color: 'var(--text-primary)',
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '3px',
+                }}
+              >
                 {EMAIL}
-              </div>
+              </a>
             </div>
 
             {/* Copy button */}

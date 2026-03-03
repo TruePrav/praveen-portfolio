@@ -269,16 +269,16 @@ h1, h2, h3, h4, h5, h6 {
 /* ─── Nav ───────────────────────────────────────────────── */
 .nav-link {
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
   text-decoration: none;
   transition: color 0.2s ease;
   letter-spacing: 0.02em;
 }
 
 .nav-link:hover {
-  color: var(--text-primary);
+  color: var(--accent);
 }
 
 /* ─── Logo ──────────────────────────────────────────────── */

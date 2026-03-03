@@ -25,13 +25,13 @@ const skillGroups = [
     category: 'Bots & Infra',
     icon: '🔗',
     color: '#8B5CF6',
-    skills: ['Telegram Bots', 'Discord Bots', 'GitHub', 'Linux', 'Vercel', 'Environment Automation'],
+    skills: ['Telegram Bots', 'Discord Bots', 'Slack Bots', 'GitHub', 'Linux', 'Vercel', 'Environment Automation'],
   },
   {
     category: 'Ops & Tools',
     icon: '📊',
     color: '#22D3EE',
-    skills: ['Lightspeed POS', 'Shopify', 'Data Reconciliation', 'Customer Support Systems', 'Analytics'],
+    skills: ['Lightspeed POS', 'Shopify', 'Google Sheets', 'Slack', 'Discord', 'Data Reconciliation', 'Customer Support Systems', 'Analytics'],
   },
 ];
 
