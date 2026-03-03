@@ -1,19 +1,10 @@
-﻿'use client';
+'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+const EMAIL = 'praveen@play.bb';
 
 const links = [
-  {
-    label: 'Email',
-    value: 'praveen@play.bb',
-    href: 'mailto:praveen@play.bb',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-      </svg>
-    ),
-    color: '#22D3EE',
-  },
   {
     label: 'X / Twitter',
     value: '@TruePrav',
@@ -40,6 +31,7 @@ const links = [
 
 export default function Contact() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -58,6 +50,13 @@ export default function Contact() {
     return () => observer.disconnect();
   }, []);
 
+  const copyEmail = () => {
+    navigator.clipboard.writeText(EMAIL).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
   return (
     <section className="section" id="contact" ref={sectionRef}>
       {/* Separator */}
@@ -75,7 +74,6 @@ export default function Contact() {
 
       <div className="container mx-auto px-6 max-w-4xl text-center">
 
-        {/* Header */}
         <div className="reveal mb-4">
           <p className="section-label mb-3">CONTACT</p>
         </div>
@@ -102,7 +100,6 @@ export default function Contact() {
           Open to AI/ops roles, consulting, and interesting projects. If you&apos;re building something that needs automation — I&apos;m interested.
         </p>
 
-        {/* Contact cards */}
         <div
           className="reveal"
           style={{
@@ -113,11 +110,96 @@ export default function Contact() {
             marginBottom: '48px',
           }}
         >
+          {/* ── Email card with copy button ── */}
+          <div
+            className="glass"
+            style={{
+              padding: '20px 28px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '14px',
+              minWidth: '220px',
+              transition: 'all 0.25s ease',
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-3px)';
+              (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(34,211,238,0.3)';
+              (e.currentTarget as HTMLDivElement).style.boxShadow = '0 8px 30px rgba(34,211,238,0.08)';
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
+              (e.currentTarget as HTMLDivElement).style.borderColor = '';
+              (e.currentTarget as HTMLDivElement).style.boxShadow = '';
+            }}
+          >
+            <span style={{ color: '#22D3EE' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </span>
+
+            <div style={{ textAlign: 'left', flex: 1 }}>
+              <div style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-secondary)', fontFamily: "'Space Grotesk', sans-serif", marginBottom: '2px' }}>
+                Email
+              </div>
+              <div style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text-primary)', fontFamily: "'Space Grotesk', sans-serif" }}>
+                {EMAIL}
+              </div>
+            </div>
+
+            {/* Copy button */}
+            <button
+              onClick={copyEmail}
+              title="Copy email"
+              style={{
+                marginLeft: 'auto',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
+                padding: '5px 10px',
+                borderRadius: '6px',
+                border: `1px solid ${copied ? 'rgba(34,197,94,0.4)' : 'rgba(34,211,238,0.25)'}`,
+                background: copied ? 'rgba(34,197,94,0.1)' : 'rgba(34,211,238,0.06)',
+                color: copied ? '#22C55E' : 'rgba(34,211,238,0.7)',
+                fontSize: '0.65rem',
+                fontWeight: 600,
+                letterSpacing: '0.06em',
+                fontFamily: "'JetBrains Mono', monospace",
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                whiteSpace: 'nowrap',
+              }}
+              onMouseEnter={(e) => {
+                if (!copied) (e.currentTarget as HTMLButtonElement).style.background = 'rgba(34,211,238,0.12)';
+              }}
+              onMouseLeave={(e) => {
+                if (!copied) (e.currentTarget as HTMLButtonElement).style.background = 'rgba(34,211,238,0.06)';
+              }}
+            >
+              {copied ? (
+                <>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M20 6L9 17l-5-5"/>
+                  </svg>
+                  copied
+                </>
+              ) : (
+                <>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                  </svg>
+                  copy
+                </>
+              )}
+            </button>
+          </div>
+
+          {/* ── Other links ── */}
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              target={link.href.startsWith('mailto') ? undefined : '_blank'}
+              target="_blank"
               rel="noopener noreferrer"
               style={{ textDecoration: 'none' }}
             >
@@ -145,39 +227,14 @@ export default function Contact() {
               >
                 <span style={{ color: link.color }}>{link.icon}</span>
                 <div style={{ textAlign: 'left' }}>
-                  <div
-                    style={{
-                      fontSize: '0.7rem',
-                      fontWeight: 600,
-                      letterSpacing: '0.08em',
-                      textTransform: 'uppercase',
-                      color: 'var(--text-secondary)',
-                      fontFamily: "'Space Grotesk', sans-serif",
-                      marginBottom: '2px',
-                    }}
-                  >
+                  <div style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--text-secondary)', fontFamily: "'Space Grotesk', sans-serif", marginBottom: '2px' }}>
                     {link.label}
                   </div>
-                  <div
-                    style={{
-                      fontSize: '0.9rem',
-                      fontWeight: 500,
-                      color: 'var(--text-primary)',
-                      fontFamily: "'Space Grotesk', sans-serif",
-                    }}
-                  >
+                  <div style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text-primary)', fontFamily: "'Space Grotesk', sans-serif" }}>
                     {link.value}
                   </div>
                 </div>
-                <svg
-                  style={{ marginLeft: 'auto', color: link.color, opacity: 0.6 }}
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
+                <svg style={{ marginLeft: 'auto', color: link.color, opacity: 0.6 }} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M7 17L17 7M17 7H7M17 7v10"/>
                 </svg>
               </div>
@@ -185,19 +242,10 @@ export default function Contact() {
           ))}
         </div>
 
-        {/* Footer note */}
-        <div
-          className="reveal"
-          style={{
-            fontSize: '0.8rem',
-            color: 'var(--text-secondary)',
-            opacity: 0.6,
-          }}
-        >
+        <div className="reveal" style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', opacity: 0.6 }}>
           © {new Date().getFullYear()} Praveen Mahtani
         </div>
       </div>
     </section>
   );
 }
-
