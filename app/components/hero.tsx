@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   const scrollToWork = () => {
-    const el = document.getElementById('work');
+    const el = document.getElementById('agents');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 

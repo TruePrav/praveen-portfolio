@@ -1,15 +1,16 @@
-﻿import { Metadata } from 'next';
+import { Metadata } from 'next';
 import Nav from './components/nav';
 import Hero from './components/hero';
 import LiveSystems from './components/live-systems';
 import Projects from './components/projects';
 import Skills from './components/skills';
+import About from './components/about';
 import Contact from './components/contact';
 
 export const metadata: Metadata = {
   title: 'Praveen Mahtani — AI Systems Builder',
   description:
-    'Technical Operations Manager building multi-agent AI systems, automation pipelines, and full-stack products. PLAY Barbados, Digisales, ailevelup.ca.',
+    'Technical Operations Manager based in Toronto. Building multi-agent AI systems, automation pipelines, and full-stack products.',
 };
 
 export default function Home() {
@@ -17,11 +18,11 @@ export default function Home() {
     <main style={{ minHeight: '100vh', background: '#0D1117' }}>
       <Nav />
       <Hero />
-      <LiveSystems />
-      <Projects />
-      <Skills />
-      <Contact />
+      <LiveSystems />  {/* id="agents" */}
+      <Projects />     {/* id="projects" */}
+      <Skills />       {/* id="skills" */}
+      <About />        {/* id="about" */}
+      <Contact />      {/* id="contact" */}
     </main>
   );
 }
-

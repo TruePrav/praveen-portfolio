@@ -2,14 +2,33 @@
 
 import { useState, useEffect } from 'react';
 
+const NAV_ITEMS = [
+  { label: 'Agents',   id: 'agents'   },
+  { label: 'Projects', id: 'projects' },
+  { label: 'Skills',   id: 'skills'   },
+  { label: 'About',    id: 'about'    },
+];
+
 export default function Nav() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen]     = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive]     = useState('');
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 24);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+      // Highlight active section
+      const ids = ['agents', 'projects', 'skills', 'about', 'contact'];
+      for (const id of [...ids].reverse()) {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 120) {
+          setActive(id);
+          break;
+        }
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const scrollTo = (id: string) => {
@@ -35,8 +54,16 @@ export default function Nav() {
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8">
-            <button onClick={() => scrollTo('work')} className="nav-link">Work</button>
-            <button onClick={() => scrollTo('skills')} className="nav-link">Skills</button>
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollTo(item.id)}
+                className="nav-link"
+                style={{ color: active === item.id ? 'var(--accent)' : undefined, transition: 'color 0.2s' }}
+              >
+                {item.label}
+              </button>
+            ))}
             <button
               onClick={() => scrollTo('contact')}
               className="btn-outline !py-2 !px-5 !text-sm"
@@ -52,10 +79,7 @@ export default function Nav() {
             aria-label="Toggle menu"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
                 d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
               />
             </svg>
@@ -65,8 +89,11 @@ export default function Nav() {
         {/* Mobile dropdown */}
         {isOpen && (
           <div className="md:hidden mt-4 pb-4 flex flex-col gap-4 border-t border-white/[0.06] pt-4">
-            <button onClick={() => scrollTo('work')} className="nav-link text-left">Work</button>
-            <button onClick={() => scrollTo('skills')} className="nav-link text-left">Skills</button>
+            {NAV_ITEMS.map((item) => (
+              <button key={item.id} onClick={() => scrollTo(item.id)} className="nav-link text-left">
+                {item.label}
+              </button>
+            ))}
             <button onClick={() => scrollTo('contact')} className="nav-link text-left">Contact</button>
           </div>
         )}

@@ -69,8 +69,32 @@ export default function LiveSystems() {
     return () => observer.disconnect();
   }, []);
 
+  const clientDeployments = [
+    {
+      type: 'Gaming Retail',
+      count: 6,
+      departments: ['Customer Support', 'Finance & Reconciliation', 'Content Intelligence', 'Sales Analytics', 'HR & Training', 'Operations'],
+      stack: ['Python', 'LangChain', 'OpenClaw', 'Telegram', 'Discord'],
+      color: '#22D3EE',
+    },
+    {
+      type: 'Digital Commerce',
+      count: 4,
+      departments: ['Sales Orchestration', 'Order Fulfillment', 'Product Knowledge', 'Customer Support'],
+      stack: ['Python', 'LangChain', 'REST APIs', 'Discord'],
+      color: '#F97316',
+    },
+    {
+      type: 'Retail (In Progress)',
+      count: '4+',
+      departments: ['Customer Support', 'Finance', 'Operations', 'Content'],
+      stack: ['OpenClaw', 'LangChain', 'Next.js'],
+      color: '#22C55E',
+    },
+  ];
+
   return (
-    <section className="section" ref={sectionRef} id="work">
+    <section className="section" ref={sectionRef} id="agents">
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Header */}
         <div className="reveal mb-12">
@@ -187,6 +211,61 @@ export default function LiveSystems() {
             <span style={{ marginLeft: 'auto', fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.65rem', color: 'rgba(255,255,255,0.15)' }}>host: personal</span>
           </div>
         </div>
+      {/* ── Client Deployments ─────────────────────────────────────────── */}
+      <div className="reveal" style={{ marginTop: '48px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+          <div style={{ height: '1px', flex: 1, background: 'rgba(255,255,255,0.06)' }} />
+          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(34,211,238,0.5)' }}>
+            Client Deployments
+          </span>
+          <div style={{ height: '1px', flex: 1, background: 'rgba(255,255,255,0.06)' }} />
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '16px' }}>
+          {clientDeployments.map((client) => (
+            <div
+              key={client.type}
+              className="reveal"
+              style={{ padding: '24px', borderRadius: '14px', background: 'rgba(5,12,20,0.6)', border: '1px solid rgba(255,255,255,0.06)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', position: 'relative', overflow: 'hidden' }}
+            >
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: `linear-gradient(90deg, transparent, ${client.color}40, transparent)` }} />
+
+              {/* Header row */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+                <div>
+                  <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.95rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '2px' }}>
+                    {client.type}
+                  </div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.7rem', color: client.color }}>
+                    {client.count} agents deployed
+                  </div>
+                </div>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.65rem', color: 'rgba(34,197,94,0.7)', padding: '3px 10px', borderRadius: '4px', background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.15)' }}>
+                  {client.type.includes('Progress') ? 'BUILDING' : 'LIVE'}
+                </div>
+              </div>
+
+              {/* Departments */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '14px' }}>
+                {client.departments.map((dept) => (
+                  <span key={dept} style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.68rem', padding: '3px 10px', borderRadius: '20px', color: client.color, background: `${client.color}10`, border: `1px solid ${client.color}25` }}>
+                    {dept}
+                  </span>
+                ))}
+              </div>
+
+              {/* Stack */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', paddingTop: '12px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                {client.stack.map((tech) => (
+                  <span key={tech} style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.62rem', color: 'rgba(255,255,255,0.3)', padding: '2px 7px', borderRadius: '3px', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
       </div>
 
       <style jsx>{`
