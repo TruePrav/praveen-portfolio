@@ -2,13 +2,13 @@
 
 import { useEffect, useRef } from 'react';
 
-const facts = [
+const facts: { label: string; value: string; href?: string }[] = [
   { label: 'Based in',   value: 'Toronto, Canada 🇨🇦' },
   { label: 'Role',       value: 'Technical Operations Manager' },
-  { label: 'Company',    value: 'Infinite Technology Inc. — PLAY Barbados' },
-  { label: 'Building',   value: 'ailevelup.ca — AI automation for SMBs' },
+  { label: 'Company',    value: 'Infinite Technology Inc. - PLAY Barbados' },
+  { label: 'Building',   value: 'ailevelup.ca — AI automation for SMBs', href: 'https://ailevelup.ca' },
   { label: 'Stack',      value: 'Python · Node.js · Next.js · LangChain · OpenClaw' },
-  { label: 'Online',     value: '@TruePrav — AI, automation, gaming, web3' },
+  { label: 'Online',     value: '@TruePrav - AI, automation, gaming, web3' },
 ];
 
 export default function About() {
@@ -37,7 +37,7 @@ export default function About() {
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '64px', alignItems: 'center' }}>
 
-          {/* Left — text */}
+          {/* Left - text */}
           <div>
             <div className="reveal mb-12">
               <p className="section-label mb-3">ABOUT</p>
@@ -46,21 +46,21 @@ export default function About() {
 
             <div className="reveal">
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '20px' }}>
-                I&apos;m Praveen. I grew up obsessed with computers and always looking for ways to streamline things — personal tasks, business processes, anything that felt like it could run better with the right system behind it. Building AI agents isn&apos;t a career pivot for me, it&apos;s just the most powerful version of what I&apos;ve always done.
+                I&apos;m Praveen. I grew up obsessed with computers and always looking for ways to streamline things - personal tasks, business processes, anything that felt like it could run better with the right system behind it. Building AI agents isn&apos;t a career pivot for me, it&apos;s just the most powerful version of what I&apos;ve always done.
               </p>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '20px' }}>
-                Based in Toronto, I run technical operations for Infinite Technology Inc. — a family-owned gaming retail business with two locations in Barbados. I wear a lot of hats: marketing, customer support, digital ops, development, and automation. That breadth is exactly what shaped how I think about AI — not as a single tool, but as a network of specialists working together.
+                Based in Toronto, I run technical operations for Infinite Technology Inc. - a family-owned gaming retail business with two locations in Barbados. I wear a lot of hats: marketing, customer support, digital ops, development, and automation. That breadth is exactly what shaped how I think about AI - not as a single tool, but as a network of specialists working together.
               </p>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '20px' }}>
                 Most of what I build solves a real problem I ran into first. The agent network started because I needed to automate 50% of ops. The content agent because consistent posting eats too much time. The trading bot because I wanted to understand fully autonomous systems from the inside.
               </p>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8 }}>
-                Now I&apos;m building <span style={{ color: 'var(--accent)' }}>ailevelup.ca</span> to bring the same systems to other businesses — done-for-you AI that actually runs.
+                Now I&apos;m building <a href="https://ailevelup.ca" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>ailevelup.ca</a> to bring the same systems to other businesses — done-for-you AI that actually runs.
               </p>
             </div>
           </div>
 
-          {/* Right — facts card */}
+          {/* Right - facts card */}
           <div className="reveal">
             <div
               className="glass"
@@ -109,15 +109,12 @@ export default function About() {
                     >
                       {fact.label}
                     </span>
-                    <span
-                      style={{
-                        fontFamily: "'Space Grotesk', sans-serif",
-                        fontSize: '0.85rem',
-                        color: 'var(--text-primary)',
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {fact.value}
+                    <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.85rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>
+                      {fact.href ? (
+                        <a href={fact.href} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                          {fact.value}
+                        </a>
+                      ) : fact.value}
                     </span>
                   </div>
                 ))}

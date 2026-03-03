@@ -85,7 +85,7 @@ export default function LiveSystems() {
       color: '#F97316',
     },
     {
-      type: 'Retail (In Progress)',
+      type: 'Vegan Catering (In Progress)',
       count: '4+',
       departments: ['Customer Support', 'Finance', 'Operations', 'Content'],
       stack: ['OpenClaw', 'LangChain', 'Next.js'],

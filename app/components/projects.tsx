@@ -6,6 +6,7 @@ const projects = [
   {
     title: 'PLAY Agent Network',
     tag: 'Production · Gaming Retail',
+    url: null,
     description:
       'Multi-agent AI system for a family-owned gaming retail business. An orchestrator supervises a network of specialised agents across customer support, finance, content, sales intelligence, and HR — fully automated ops across Telegram, Discord, and WhatsApp.',
     impact: [
@@ -21,6 +22,7 @@ const projects = [
   {
     title: 'ailevelup.ca',
     tag: 'Live · AI Consulting',
+    url: 'https://ailevelup.ca',
     description:
       'AI automation platform for small and medium businesses. Deploys custom AI agent networks across every business function — support, finance, sales, ops, marketing, HR, and content — without requiring a technical team on the client side.',
     impact: [
@@ -36,6 +38,7 @@ const projects = [
   {
     title: 'Digisales',
     tag: 'Internal · E-commerce',
+    url: 'https://digisales.ca',
     description:
       'Custom digital storefront enabling online gift card and digital product sales for a gaming retail business. An agent network handles the full sales pipeline — product queries, order fulfillment, and customer support — with zero manual processing.',
     impact: [
@@ -50,9 +53,10 @@ const projects = [
   },
   {
     title: 'Greenbox Barbados',
-    tag: 'Production · Retail',
+    tag: 'Production · Vegan Catering',
+    url: 'https://greenboxbarbados.com',
     description:
-      'Built the digital presence for a local Barbados retail business. Currently designing and deploying a custom AI agent network for their operations — applying the same multi-agent framework to a new client vertical.',
+      'Built the digital presence for a vegan catering business in Barbados. Currently designing and deploying a custom AI agent network for their operations — applying the same multi-agent framework to a new client vertical.',
     impact: [
       'greenboxbarbados.com live',
       'AI agent network in progress',
@@ -123,12 +127,36 @@ export default function Projects() {
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '32px', alignItems: 'start', position: 'relative', zIndex: 1 }}>
                 <div>
-                  <div style={{ fontSize: '0.7rem', fontWeight: 600, color: project.accent, letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif", marginBottom: '8px' }}>
-                    {project.tag}
+                  {/* Tag + visit link */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+                    <div style={{ fontSize: '0.7rem', fontWeight: 600, color: project.accent, letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>
+                      {project.tag}
+                    </div>
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.65rem', fontWeight: 600, color: project.accent, opacity: 0.7, textDecoration: 'none', border: `1px solid ${project.accent}40`, borderRadius: '4px', padding: '1px 7px', fontFamily: "'JetBrains Mono', monospace", transition: 'opacity 0.2s' }}
+                        onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
+                        onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.7')}
+                      >
+                        ↗ visit
+                      </a>
+                    )}
                   </div>
+
                   <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '12px', lineHeight: 1.2 }}>
-                    {project.title}
+                    {project.url ? (
+                      <a href={project.url} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = project.accent)}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
+                      >
+                        {project.title}
+                      </a>
+                    ) : project.title}
                   </h3>
+
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '20px' }}>
                     {project.description}
                   </p>
@@ -144,12 +172,24 @@ export default function Projects() {
                     Impact
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                    {project.impact.map((item) => (
-                      <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.875rem', color: 'var(--text-primary)' }}>
-                        <span style={{ color: project.accent, marginTop: '1px', flexShrink: 0 }}>✅</span>
-                        {item}
-                      </div>
-                    ))}
+                    {project.impact.map((item) => {
+                      // Auto-link impact items that look like domain names
+                      const domainMatch = item.match(/^([\w-]+\.[\w.]+)\s/);
+                      const url = domainMatch ? `https://${domainMatch[1]}` : null;
+                      return (
+                        <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.875rem', color: 'var(--text-primary)' }}>
+                          <span style={{ color: project.accent, marginTop: '1px', flexShrink: 0 }}>✅</span>
+                          {url ? (
+                            <span>
+                              <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: project.accent, textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                                {domainMatch![1]}
+                              </a>
+                              {item.slice(domainMatch![1].length)}
+                            </span>
+                          ) : item}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
