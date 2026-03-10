@@ -167,7 +167,7 @@ export default function LiveSystems() {
               <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#FFBD2E', opacity: 0.8 }} />
               <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#28CA41', opacity: 0.8 }} />
             </div>
-            <div style={{ fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace", fontSize: '0.75rem', color: 'rgba(34,211,238,0.6)', letterSpacing: '0.06em' }}>
+            <div className="terminal-title" style={{ fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace", fontSize: '0.75rem', color: 'rgba(34,211,238,0.6)', letterSpacing: '0.06em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               agent-status --personal --watch
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -176,7 +176,8 @@ export default function LiveSystems() {
             </div>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '60px 120px 1fr 110px 90px 80px', gap: '12px', padding: '10px 20px', borderBottom: '1px solid rgba(255,255,255,0.04)', position: 'relative', zIndex: 1 }}>
+          {/* Desktop table header - hidden on mobile */}
+          <div className="desktop-table-header" style={{ display: 'grid', gridTemplateColumns: '60px 120px 1fr 110px 90px 80px', gap: '12px', padding: '10px 20px', borderBottom: '1px solid rgba(255,255,255,0.04)', position: 'relative', zIndex: 1 }}>
             {['PID', 'NAME', 'ROLE', 'METRIC', 'UPTIME', 'STATUS'].map((col) => (
               <span key={col} style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.65rem', color: 'rgba(34,211,238,0.4)', letterSpacing: '0.1em', fontWeight: 600 }}>
                 {col}
@@ -184,7 +185,8 @@ export default function LiveSystems() {
             ))}
           </div>
 
-          <div style={{ position: 'relative', zIndex: 1 }}>
+          {/* Desktop rows - hidden on mobile */}
+          <div className="desktop-table-rows" style={{ position: 'relative', zIndex: 1 }}>
             {agents.map((agent, i) => (
               <div
                 key={agent.name}
@@ -222,6 +224,37 @@ export default function LiveSystems() {
             ))}
           </div>
 
+          {/* Mobile card layout - hidden on desktop */}
+          <div className="mobile-cards" style={{ position: 'relative', zIndex: 1 }}>
+            {agents.map((agent, i) => (
+              <div
+                key={agent.name}
+                style={{
+                  padding: '16px 16px',
+                  borderBottom: i < agents.length - 1 ? '1px solid rgba(255,255,255,0.03)' : 'none',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.65rem', color: 'rgba(255,255,255,0.2)' }}>{agent.pid}</span>
+                    <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.9rem', fontWeight: 600, color: agent.color }}>{agent.name}</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: agent.status === 'active' ? '#22C55E' : '#FBBF24', display: 'inline-block', animation: agent.status === 'active' ? 'termPulse 2s ease-in-out infinite' : 'buildPulse 1.2s ease-in-out infinite' }} />
+                    <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.6rem', fontWeight: 600, letterSpacing: '0.06em', color: agent.status === 'active' ? '#22C55E' : '#FBBF24', padding: '2px 6px', borderRadius: '4px', background: agent.status === 'active' ? 'rgba(34,197,94,0.1)' : 'rgba(251,191,36,0.1)', border: agent.status === 'active' ? '1px solid rgba(34,197,94,0.2)' : '1px solid rgba(251,191,36,0.2)' }}>
+                      {agent.status === 'active' ? 'ACTIVE' : 'BUILDING'}
+                    </span>
+                  </div>
+                </div>
+                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.78rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.5, margin: '0 0 8px 0' }}>{agent.role}</p>
+                <div style={{ display: 'flex', gap: '16px' }}>
+                  <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.68rem', color: 'rgba(255,255,255,0.55)' }}>{agent.stat}</span>
+                  <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.68rem', color: agent.status === 'active' ? '#22C55E' : '#FBBF24' }}>↑ {agent.uptime}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
           <div style={{ padding: '12px 20px', borderTop: '1px solid rgba(34,211,238,0.08)', background: 'rgba(34,211,238,0.02)', display: 'flex', alignItems: 'center', gap: '8px', position: 'relative', zIndex: 1 }}>
             <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.7rem', color: 'rgba(34,211,238,0.4)' }}>$</span>
             <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.7rem', color: 'rgba(34,211,238,0.5)' }}>
@@ -248,6 +281,18 @@ export default function LiveSystems() {
         @keyframes rowGlowB {
           0%, 100% { box-shadow: none; }
           50% { box-shadow: inset 0 0 30px rgba(139,92,246,0.015); }
+        }
+        .mobile-cards {
+          display: none;
+        }
+        @media (max-width: 768px) {
+          .desktop-table-header,
+          .desktop-table-rows {
+            display: none !important;
+          }
+          .mobile-cards {
+            display: block !important;
+          }
         }
       `}</style>
     </section>
