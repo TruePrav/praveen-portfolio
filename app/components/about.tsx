@@ -7,8 +7,8 @@ const facts: { label: string; value: string; href?: string }[] = [
   { label: 'Role',       value: 'Technical Operations Manager' },
   { label: 'Company',    value: 'Infinite Technology Inc. - PLAY Barbados' },
   { label: 'Building',   value: 'ailevelup.ca — AI automation for SMBs', href: 'https://ailevelup.ca' },
-  { label: 'Stack',      value: 'Python · Node.js · Next.js · LangChain · OpenClaw' },
-  { label: 'Online',     value: '@TruePrav - AI, automation, gaming, web3' },
+  { label: 'Stack',      value: 'Python · Node.js · Next.js · LangChain · Deep Agents' },
+  { label: 'Online',     value: '@TruePrav - AI, automation, gaming, crypto' },
 ];
 
 export default function About() {
@@ -46,10 +46,10 @@ export default function About() {
 
             <div className="reveal">
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '20px' }}>
-                I&apos;m Praveen. I grew up obsessed with computers and always looking for ways to streamline things - personal tasks, business processes, anything that felt like it could run better with the right system behind it. Building AI agents isn&apos;t a career pivot for me, it&apos;s just the most powerful version of what I&apos;ve always done.
+                I&apos;m Praveen. Born in Chile, raised in Barbados, now based in Toronto. I grew up obsessed with computers, training for gaming tournaments, DJing, and learning software. That competitive edge never left. Now I build AI agents.
               </p>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '20px' }}>
-                Based in Toronto, I run technical operations for Infinite Technology Inc. - a family-owned gaming retail business with two locations in Barbados. I wear a lot of hats: marketing, customer support, digital ops, development, and automation. That breadth is exactly what shaped how I think about AI - not as a single tool, but as a network of specialists working together.
+                I run technical operations for a family-owned gaming retail business with two locations in Barbados. I wear every hat: marketing, support, dev, ops, automation. Growing up around three cultures and running a business across two countries taught me how to build systems that work without me being in the room. That&apos;s exactly how I think about AI agents. Not one tool, but a network of specialists working together.
               </p>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '20px' }}>
                 Most of what I build solves a real problem I ran into first. The agent network started because I needed to automate 50% of ops. The content agent because consistent posting eats too much time. The trading bot because I wanted to understand fully autonomous systems from the inside.
