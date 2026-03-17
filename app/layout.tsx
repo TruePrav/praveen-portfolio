@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Praveen Mahtani — AI Systems Builder',
-  description: 'Technical Operations Manager building multi-agent AI systems, automation pipelines, and full-stack products.',
+  description: 'AI Agent Engineer building multi-agent AI systems, automation pipelines, and full-stack products.',
 };
 
 export default function RootLayout({

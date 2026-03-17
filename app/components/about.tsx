@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 
 const facts: { label: string; value: string; href?: string }[] = [
   { label: 'Based in',   value: 'Toronto, Canada 🇨🇦' },
-  { label: 'Role',       value: 'Technical Operations Manager' },
+  { label: 'Role',       value: 'AI Agent Engineer' },
   { label: 'Company',    value: 'Infinite Technology Inc. - PLAY Barbados' },
   { label: 'Building',   value: 'ailevelup.ca — AI automation for SMBs', href: 'https://ailevelup.ca' },
   { label: 'Stack',      value: 'Python · Node.js · Next.js · LangChain · Deep Agents' },

@@ -19,7 +19,7 @@ export default function Resume() {
       tools: ['Python', 'Next.js', 'Supabase', 'PostgreSQL', 'LangChain', 'LangGraph', 'OpenClaw', 'Polygon/Web3', 'AI Agents', 'Vercel'],
     },
     {
-      role: 'Technical Operations Manager',
+      role: 'AI Agent Engineer',
       company: 'Infinite Technology Inc. (PLAY Barbados)',
       period: '01/2024 - Present',
       responsibilities: [
