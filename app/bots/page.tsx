@@ -48,6 +48,48 @@ export default function Bots() {
       codeSections: [],
     },
     {
+      name: 'PlayMaster — PLAY Agent Network Orchestrator',
+      description: 'LangChain supervisor agent that orchestrates the entire PLAY Barbados AI network. Routes incoming requests to the right specialist agent — support, reconciliation, inventory, or content — with automatic fallback handling.',
+      features: [
+        'Routes customer queries, ops requests, and data tasks to the right specialist agent via tool-based delegation',
+        'Manages 5 active subagents: Scout, Ledger, Prophet, Trender, and Codex',
+        'Hot-swap model routing — switches between Grok, Claude, and GPT based on task type and availability',
+        'Maintains AGENT_REGISTRY.md as single source of truth for all agent capabilities and routing rules',
+        'Connected to both Telegram and Discord — handles multi-channel orchestration in real time',
+      ],
+      status: 'Live & Active',
+      tech: ['Python', 'LangChain', 'LangGraph', 'xAI Grok', 'Anthropic Claude', 'Telegram Bot API', 'Discord', 'LangSmith'],
+      codeSections: [],
+    },
+    {
+      name: 'Prophet — Inventory & Reorder Intelligence Agent',
+      description: 'LangChain agent with 20 Lightspeed tools that monitors physical retail inventory across 2 PLAY Barbados locations, generates automated reorder reports, and surfaces low-stock alerts before shelves run dry.',
+      features: [
+        '20 Lightspeed POS tools — queries sales velocity, stock levels, and purchase orders across both stores',
+        'Automated reorder report generation: identifies products below threshold based on 90/180-day sales history',
+        'OAuth token auto-refresh — stays authenticated without manual intervention',
+        'Writes formatted reports directly to Google Sheets with color-coded priority flags',
+        'Discord alerts on critical low-stock items with direct reorder recommendations',
+      ],
+      status: 'Live & Active',
+      tech: ['Python', 'LangChain', 'Lightspeed API', 'Google Sheets API', 'OAuth2', 'Discord', 'Counterpoint SQL'],
+      codeSections: [],
+    },
+    {
+      name: 'Trender — PLAY Social Content Agent',
+      description: 'LangChain content intelligence agent that researches trending topics in gaming and gift cards, then generates platform-native content briefs for PLAY Barbados TikTok, Instagram Reels, and static posts.',
+      features: [
+        'Daily trend research across gaming, gift cards, and Caribbean market — web scraping + API sources',
+        'Generates structured content briefs: hook, format, caption, hashtags, and platform recommendation',
+        'Feedback loop system — approved/rejected content updates its scoring model over time',
+        'Writes output to Google Sheets content calendar and sends Telegram brief to ops team',
+        'Integrated with Higgsfield API for AI video generation on approved video concepts',
+      ],
+      status: 'Live & Active',
+      tech: ['Python', 'LangChain', 'Google Sheets API', 'Higgsfield API', 'Discord', 'Telegram Bot API'],
+      codeSections: [],
+    },
+    {
       name: 'Degen — Autonomous Prediction Market Trader',
       description: 'Autonomous 15-minute trading loop on Polymarket using USDC on Polygon. Applies ICT methodology and conviction scoring to identify mispriced prediction markets and trade them algorithmically.',
       features: [
