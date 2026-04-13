@@ -2,123 +2,37 @@
 
 import { useEffect, useRef } from 'react';
 
+const aion = {
+  url: 'https://www.aionchain.app',
+  tag: 'Personal - On-Chain Analytics',
+  description:
+    'Multi-chain smart money platform tracking on-chain wallet activity, whale movements, and DEX flows across Solana and EVM chains. Built to surface high-conviction setups and smart money signals in real time. Competing in the Nansen CLI competition.',
+  features: [
+    'Real-time wallet + whale movement tracking',
+    'Smart money signal aggregation across chains',
+    'Multi-chain: Solana, Polygon, Ethereum',
+    'Custom analytics dashboards, live on VPS',
+  ],
+  stack: ['Python', 'FastAPI', 'Next.js', 'Nansen API', 'Solana', 'Polygon', 'REST APIs', 'Linux VPS'],
+  accent: '#F97316',
+  glow: 'rgba(249,115,22,0.07)',
+};
+
 const agents = [
-  {
-    pid: '1001',
-    name: 'alfred',
-    displayName: 'Alfred',
-    role: 'Orchestrator + ops — routes tasks, manages memory, monitors all agents',
-    stat: 'Ops control',
-    status: 'active',
-    color: '#22D3EE',
-    uptime: '99.8%',
-    module: 'orchestrator.core',
-  },
-  {
-    pid: '1002',
-    name: 'linda',
-    displayName: 'Linda',
-    role: 'Content research — daily trending scrape, 7-day calendar, Sheets + Telegram brief',
-    stat: 'Daily brief',
-    status: 'active',
-    color: '#8B5CF6',
-    uptime: '98.5%',
-    module: 'content.megaphone',
-  },
-  {
-    pid: '1003',
-    name: 'jax',
-    displayName: 'Jax',
-    role: 'Research & analysis — web search, document review, competitor intel, ad-hoc ops',
-    stat: 'Research ops',
-    status: 'active',
-    color: '#F97316',
-    uptime: '98.9%',
-    module: 'research.intel',
-  },
-  {
-    pid: '1004',
-    name: 'lux',
-    displayName: 'Lux',
-    role: 'Career strategy — resume tailoring, job pipeline, interview prep, LinkedIn ops',
-    stat: 'Job pipeline',
-    status: 'active',
-    color: '#A78BFA',
-    uptime: '99.0%',
-    module: 'career.strategy',
-  },
-  {
-    pid: '1005',
-    name: 'popeye',
-    displayName: 'Popeye',
-    role: 'Health & fitness — meal plans, workout programming, macros, daily check-ins',
-    stat: 'Daily plans',
-    status: 'active',
-    color: '#22C55E',
-    uptime: '99.0%',
-    module: 'health.coach',
-  },
-  {
-    pid: '1006',
-    name: 'zero',
-    displayName: 'Zero',
-    role: 'Full-stack dev — Next.js, React, TypeScript, UI/UX, client sites, WhatsApp integrations',
-    stat: 'Build queue',
-    status: 'active',
-    color: '#EAB308',
-    uptime: '99.1%',
-    module: 'dev.fullstack',
-  },
-  {
-    pid: '1007',
-    name: 'architect',
-    displayName: 'Architect',
-    role: 'Full-stack dev — Python, Node.js, APIs, infrastructure, system architecture',
-    stat: 'Infra build',
-    status: 'active',
-    color: '#60A5FA',
-    uptime: '99.2%',
-    module: 'dev.backend',
-  },
-  {
-    pid: '1008',
-    name: 'degen',
-    displayName: 'Degen',
-    role: 'Crypto & prediction markets — Polymarket ICT strategy, Polygon/DeFi, on-chain data',
-    stat: 'Market scan',
-    status: 'active',
-    color: '#34D399',
-    uptime: '97.5%',
-    module: 'trading.polymarket',
-  },
-  {
-    pid: '1009',
-    name: 'quant',
-    displayName: 'Quant',
-    role: 'Data & analytics — SQL queries, personal finance CSVs, charts, business data analysis',
-    stat: 'Data ops',
-    status: 'active',
-    color: '#F472B6',
-    uptime: '98.8%',
-    module: 'data.analytics',
-  },
-  {
-    pid: '1010',
-    name: 'carrington',
-    displayName: 'Carrington',
-    role: 'Personal AI companion — daily quizzes, follow-ups, relationship nudges, 3-level accountability',
-    stat: 'Daily check-in',
-    status: 'active',
-    color: '#FB7185',
-    uptime: '99.3%',
-    module: 'personal.ops',
-  },
+  { name: 'Alfred',     role: 'Orchestrator + ops — routes tasks, manages memory, monitors all agents',       color: '#22D3EE', uptime: '99.8%' },
+  { name: 'Linda',      role: 'Content research — daily trending scrape, 7-day calendar, Telegram brief',      color: '#8B5CF6', uptime: '98.5%' },
+  { name: 'Jax',        role: 'Research & analysis — web search, document review, competitor intel',           color: '#F97316', uptime: '98.9%' },
+  { name: 'Lux',        role: 'Career strategy — resume tailoring, job pipeline, interview prep',              color: '#A78BFA', uptime: '99.0%' },
+  { name: 'Popeye',     role: 'Health & fitness — meal plans, workout programming, macros, check-ins',         color: '#22C55E', uptime: '99.0%' },
+  { name: 'Zero',       role: 'Full-stack dev — Next.js, React, TypeScript, UI/UX, client sites',             color: '#EAB308', uptime: '99.1%' },
+  { name: 'Architect',  role: 'Backend dev — Python, Node.js, APIs, infrastructure, system architecture',      color: '#60A5FA', uptime: '99.2%' },
+  { name: 'Degen',      role: 'Crypto & prediction markets — Polymarket ICT strategy, Polygon/DeFi',           color: '#34D399', uptime: '97.5%' },
+  { name: 'Quant',      role: 'Data & analytics — SQL queries, personal finance, charts, business data',       color: '#F472B6', uptime: '98.8%' },
+  { name: 'Carrington', role: 'Personal AI companion — daily quizzes, follow-ups, accountability',             color: '#FB7185', uptime: '99.3%' },
 ];
 
 export default function LiveSystems() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const activeAgents = agents.filter((agent) => agent.status === 'active').length;
-  const buildingAgents = agents.length - activeAgents;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -131,7 +45,7 @@ export default function LiveSystems() {
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
@@ -140,181 +54,156 @@ export default function LiveSystems() {
   return (
     <section className="section" ref={sectionRef} id="agents">
       <div className="container mx-auto px-6 max-w-6xl">
+
         <div className="reveal mb-12">
           <p className="section-label mb-3">PASSION PROJECTS</p>
-          <h2 className="section-title mb-4">Personal Agent Command Center</h2>
+          <h2 className="section-title mb-4">Things I build for myself</h2>
           <p style={{ color: 'var(--text-secondary)', maxWidth: '520px', lineHeight: 1.7 }}>
-            Personal AI agents I run daily - orchestration, content intelligence, dev, and autonomous trading.
+            Personal systems, trading infrastructure, and a network of AI agents I run daily.
           </p>
         </div>
 
+        {/* AION Featured Card */}
         <div
-          className="reveal"
+          className="reveal glass"
           style={{
-            borderRadius: '16px',
-            overflow: 'hidden',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            background: 'rgba(5, 12, 20, 0.85)',
-            border: '1px solid rgba(34,211,238,0.20)',
-            boxShadow: '0 0 40px rgba(34,211,238,0.06), 0 4px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(34,211,238,0.08)',
+            padding: '36px',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            background: `linear-gradient(135deg, ${aion.glow}, rgba(10,14,20,0.70))`,
+            border: '1px solid rgba(255,255,255,0.07)',
+            borderTop: '1px solid rgba(255,255,255,0.10)',
+            boxShadow: `inset 0 1px 0 rgba(255,255,255,0.06), inset 0 -1px 0 rgba(0,0,0,0.2), 0 8px 40px rgba(0,0,0,0.4), 0 0 0 0.5px ${aion.accent}10`,
             position: 'relative',
+            overflow: 'hidden',
+            borderRadius: '18px',
+            marginBottom: '48px',
           }}
         >
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)',
-              pointerEvents: 'none',
-              zIndex: 0,
-              borderRadius: '16px',
-            }}
-          />
-
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '14px 20px',
-              borderBottom: '1px solid rgba(34,211,238,0.12)',
-              background: 'rgba(34,211,238,0.03)',
-              position: 'relative',
-              zIndex: 1,
-            }}
-          >
-            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#FF5F57', opacity: 0.8 }} />
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#FFBD2E', opacity: 0.8 }} />
-              <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#28CA41', opacity: 0.8 }} />
-            </div>
-            <div className="terminal-title" style={{ fontFamily: "'JetBrains Mono', 'Fira Code', 'Courier New', monospace", fontSize: '0.75rem', color: 'rgba(34,211,238,0.6)', letterSpacing: '0.06em', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              agent-status --personal --all --watch
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#22C55E', display: 'inline-block', animation: 'termPulse 2s ease-in-out infinite' }} />
-              <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.7rem', color: '#22C55E', letterSpacing: '0.08em' }}>LIVE</span>
-            </div>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: `linear-gradient(90deg, transparent, ${aion.accent}60, transparent)`, opacity: 0.7 }} />
+          <div style={{ position: 'absolute', top: '-20px', right: '24px', fontSize: '7rem', fontFamily: "'Space Grotesk', sans-serif", fontWeight: 900, color: `${aion.accent}08`, lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>
+            01
           </div>
 
-          {/* Desktop table header - hidden on mobile */}
-          <div className="desktop-table-header" style={{ display: 'grid', gridTemplateColumns: '60px 120px 1fr 110px 90px 80px', gap: '12px', padding: '10px 20px', borderBottom: '1px solid rgba(255,255,255,0.04)', position: 'relative', zIndex: 1 }}>
-            {['PID', 'NAME', 'ROLE', 'METRIC', 'UPTIME', 'STATUS'].map((col) => (
-              <span key={col} style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.65rem', color: 'rgba(34,211,238,0.4)', letterSpacing: '0.1em', fontWeight: 600 }}>
-                {col}
-              </span>
-            ))}
-          </div>
-
-          {/* Desktop rows - hidden on mobile */}
-          <div className="desktop-table-rows" style={{ position: 'relative', zIndex: 1 }}>
-            {agents.map((agent, i) => (
-              <div
-                key={agent.name}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '60px 120px 1fr 110px 90px 80px',
-                  gap: '12px',
-                  padding: '16px 20px',
-                  borderBottom: i < agents.length - 1 ? '1px solid rgba(255,255,255,0.03)' : 'none',
-                  alignItems: 'center',
-                  transition: 'background 0.2s ease',
-                  cursor: 'default',
-                  animation: agent.status === 'active' ? `rowGlow${i % 2 === 0 ? 'A' : 'B'} 4s ease-in-out infinite` : 'none',
-                  animationDelay: `${i * 0.8}s`,
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background = 'rgba(34,211,238,0.03)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLDivElement).style.background = 'transparent';
-                }}
-              >
-                <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)' }}>{agent.pid}</span>
-                <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.85rem', fontWeight: 600, color: agent.color, letterSpacing: '0.02em' }}>{agent.name}</span>
-                <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.82rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.4 }}>{agent.role}</span>
-                <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)' }}>{agent.stat}</span>
-                <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.75rem', color: agent.status === 'active' ? '#22C55E' : '#FBBF24' }}>{agent.uptime}</span>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: agent.status === 'active' ? '#22C55E' : '#FBBF24', display: 'inline-block', flexShrink: 0, animation: agent.status === 'active' ? 'termPulse 2s ease-in-out infinite' : 'buildPulse 1.2s ease-in-out infinite', animationDelay: `${i * 0.3}s` }} />
-                  <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.06em', color: agent.status === 'active' ? '#22C55E' : '#FBBF24', padding: '2px 8px', borderRadius: '4px', background: agent.status === 'active' ? 'rgba(34,197,94,0.1)' : 'rgba(251,191,36,0.1)', border: agent.status === 'active' ? '1px solid rgba(34,197,94,0.2)' : '1px solid rgba(251,191,36,0.2)' }}>
-                    {agent.status === 'active' ? 'ACTIVE' : 'BUILDING'}
-                  </span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '32px', alignItems: 'start', position: 'relative', zIndex: 1 }}>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
+                <div style={{ fontSize: '0.7rem', fontWeight: 600, color: aion.accent, letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>
+                  {aion.tag}
                 </div>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', fontSize: '0.65rem', fontWeight: 600, color: '#22C55E', letterSpacing: '0.08em', fontFamily: "'JetBrains Mono', monospace", border: '1px solid rgba(34,197,94,0.25)', borderRadius: '4px', padding: '1px 7px', background: 'rgba(34,197,94,0.08)' }}>
+                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#22C55E', display: 'inline-block', animation: 'agentPulse 2s ease-in-out infinite' }} />
+                  IN DEV
+                </span>
+                <a
+                  href={aion.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.65rem', fontWeight: 600, color: aion.accent, opacity: 0.7, textDecoration: 'none', border: `1px solid ${aion.accent}40`, borderRadius: '4px', padding: '1px 7px', fontFamily: "'JetBrains Mono', monospace", transition: 'opacity 0.2s' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
+                  onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.7')}
+                >
+                  {'->'} visit
+                </a>
               </div>
-            ))}
-          </div>
 
-          {/* Mobile card layout - hidden on desktop */}
-          <div className="mobile-cards" style={{ position: 'relative', zIndex: 1 }}>
-            {agents.map((agent, i) => (
-              <div
-                key={agent.name}
-                style={{
-                  padding: '16px 16px',
-                  borderBottom: i < agents.length - 1 ? '1px solid rgba(255,255,255,0.03)' : 'none',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.65rem', color: 'rgba(255,255,255,0.2)' }}>{agent.pid}</span>
-                    <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.9rem', fontWeight: 600, color: agent.color }}>{agent.name}</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: agent.status === 'active' ? '#22C55E' : '#FBBF24', display: 'inline-block', animation: agent.status === 'active' ? 'termPulse 2s ease-in-out infinite' : 'buildPulse 1.2s ease-in-out infinite' }} />
-                    <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.6rem', fontWeight: 600, letterSpacing: '0.06em', color: agent.status === 'active' ? '#22C55E' : '#FBBF24', padding: '2px 6px', borderRadius: '4px', background: agent.status === 'active' ? 'rgba(34,197,94,0.1)' : 'rgba(251,191,36,0.1)', border: agent.status === 'active' ? '1px solid rgba(34,197,94,0.2)' : '1px solid rgba(251,191,36,0.2)' }}>
-                      {agent.status === 'active' ? 'ACTIVE' : 'BUILDING'}
-                    </span>
-                  </div>
-                </div>
-                <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.78rem', color: 'rgba(255,255,255,0.45)', lineHeight: 1.5, margin: '0 0 8px 0' }}>{agent.role}</p>
-                <div style={{ display: 'flex', gap: '16px' }}>
-                  <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.68rem', color: 'rgba(255,255,255,0.55)' }}>{agent.stat}</span>
-                  <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.68rem', color: agent.status === 'active' ? '#22C55E' : '#FBBF24' }}>↑ {agent.uptime}</span>
-                </div>
+              <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1.15, marginBottom: '12px', letterSpacing: '-0.02em' }}>
+                AION
+              </h3>
+
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '20px' }}>
+                {aion.description}
+              </p>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {aion.stack.map((tech) => (
+                  <span key={tech} className="tech-tag">{tech}</span>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
 
-          <div style={{ padding: '12px 20px', borderTop: '1px solid rgba(34,211,238,0.08)', background: 'rgba(34,211,238,0.02)', display: 'flex', alignItems: 'center', gap: '8px', position: 'relative', zIndex: 1 }}>
-            <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.7rem', color: 'rgba(34,211,238,0.4)' }}>$</span>
-            <span style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.7rem', color: 'rgba(34,211,238,0.5)' }}>
-              {agents.length} personal agents | {activeAgents} active | {buildingAgents} building
-            </span>
-            <span style={{ marginLeft: 'auto', fontFamily: "'JetBrains Mono', 'Fira Code', monospace", fontSize: '0.65rem', color: 'rgba(255,255,255,0.15)' }}>host: personal</span>
+            <div style={{ padding: '20px', borderRadius: '12px', background: 'rgba(0,0,0,0.25)', border: `1px solid ${aion.accent}15`, backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.04)' }}>
+              <div style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--text-secondary)', fontFamily: "'Space Grotesk', sans-serif", marginBottom: '14px' }}>
+                What it does
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {aion.features.map((item) => (
+                  <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.875rem', color: 'var(--text-primary)' }}>
+                    <span style={{ color: aion.accent, marginTop: '1px', flexShrink: 0 }}>+</span>
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* Agent Network header */}
+        <div className="reveal" style={{ marginBottom: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <p style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--text-secondary)', fontFamily: "'Space Grotesk', sans-serif", margin: 0 }}>
+              MY AGENT NETWORK
+            </p>
+            <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.06)' }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#22C55E', display: 'inline-block', animation: 'agentPulse 2s ease-in-out infinite' }} />
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.65rem', color: '#22C55E', letterSpacing: '0.08em' }}>
+                {agents.length} ACTIVE
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Agent grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '14px' }}>
+          {agents.map((agent, i) => (
+            <div
+              key={agent.name}
+              className="reveal"
+              style={{
+                padding: '18px 20px',
+                borderRadius: '14px',
+                background: 'rgba(5,12,20,0.7)',
+                border: '1px solid rgba(255,255,255,0.06)',
+                borderLeft: `3px solid ${agent.color}45`,
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                boxShadow: '0 2px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)',
+                transition: 'border-left-color 0.2s, box-shadow 0.2s',
+                transitionDelay: `${i * 40}ms`,
+                cursor: 'default',
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLDivElement).style.borderLeftColor = agent.color;
+                (e.currentTarget as HTMLDivElement).style.boxShadow = `0 4px 28px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 0 1px ${agent.color}12`;
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLDivElement).style.borderLeftColor = `${agent.color}45`;
+                (e.currentTarget as HTMLDivElement).style.boxShadow = '0 2px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04)';
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.9rem', fontWeight: 700, color: agent.color }}>
+                  {agent.name}
+                </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#22C55E', display: 'inline-block', animation: 'agentPulse 2s ease-in-out infinite', animationDelay: `${i * 0.18}s` }} />
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.6rem', color: '#22C55E', letterSpacing: '0.05em' }}>{agent.uptime}</span>
+                </div>
+              </div>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.76rem', color: 'rgba(255,255,255,0.42)', lineHeight: 1.5, margin: 0 }}>
+                {agent.role}
+              </p>
+            </div>
+          ))}
+        </div>
+
       </div>
 
       <style jsx>{`
-        @keyframes termPulse {
-          0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
-          50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(34,197,94,0); }
-        }
-        @keyframes buildPulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-        @keyframes rowGlowA {
-          0%, 100% { box-shadow: none; }
-          50% { box-shadow: inset 0 0 30px rgba(34,211,238,0.015); }
-        }
-        @keyframes rowGlowB {
-          0%, 100% { box-shadow: none; }
-          50% { box-shadow: inset 0 0 30px rgba(139,92,246,0.015); }
-        }
-        .mobile-cards {
-          display: none;
-        }
-        @media (max-width: 768px) {
-          .desktop-table-header,
-          .desktop-table-rows {
-            display: none !important;
-          }
-          .mobile-cards {
-            display: block !important;
-          }
+        @keyframes agentPulse {
+          0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34,197,94,0.35); }
+          50% { opacity: 0.6; box-shadow: 0 0 0 4px rgba(34,197,94,0); }
         }
       `}</style>
     </section>

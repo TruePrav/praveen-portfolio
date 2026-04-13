@@ -37,6 +37,23 @@ const projects = [
     number: '02',
   },
   {
+    title: 'Inventory Replenishment App',
+    tag: 'Client - Retail Automation',
+    url: '',
+    description:
+      'AI-powered inventory replenishment tool for a Barbados clothing retailer. Processes Lightspeed POS CSV exports through a multi-stage pipeline — exact match, fuzzy match, then LLM fallback — to generate prioritized restock reports across two stores and a warehouse.',
+    impact: [
+      'Automated a fully manual inventory review process',
+      'Combines sales + layaway data into one unified report',
+      'Handles 2 stores + 1 warehouse simultaneously',
+      'CSV export ready for direct POS import',
+    ],
+    stack: ['Python', 'FastAPI', 'pydantic-ai', 'OpenAI GPT-4o-mini', 'pandas', 'rapidfuzz', 'Jinja2', 'Render', 'Lightspeed POS'],
+    accent: '#F97316',
+    glow: 'rgba(249,115,22,0.06)',
+    number: '03',
+  },
+  {
     title: 'Digisales',
     tag: 'Internal - E-commerce',
     url: 'https://digisales.ca',
@@ -50,7 +67,7 @@ const projects = [
     stack: ['Next.js', 'TypeScript', 'Tailwind', 'SQL', 'LangChain', 'REST APIs', 'Slack', 'Google Sheets'],
     accent: '#22D3EE',
     glow: 'rgba(34,211,238,0.06)',
-    number: '03',
+    number: '04',
   },
   {
     title: 'Greenbox Barbados',
@@ -66,7 +83,7 @@ const projects = [
     stack: ['Next.js', 'Tailwind', 'Vercel', 'OpenClaw', 'LangChain'],
     accent: '#22C55E',
     glow: 'rgba(34,197,94,0.06)',
-    number: '04',
+    number: '05',
   },
 ];
 
@@ -131,7 +148,7 @@ export default function Projects() {
                     <div style={{ fontSize: '0.7rem', fontWeight: 600, color: project.accent, letterSpacing: '0.1em', textTransform: 'uppercase', fontFamily: "'Space Grotesk', sans-serif" }}>
                       {project.tag}
                     </div>
-                    {project.url && (
+                    {project.url && project.url.length > 0 && (
                       <a
                         href={project.url}
                         target="_blank"
@@ -147,7 +164,7 @@ export default function Projects() {
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
                     <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.2 }}>
-                      {project.url ? (
+                      {project.url && project.url.length > 0 ? (
                         <a
                           href={project.url}
                           target="_blank"

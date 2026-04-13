@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import Nav from './components/nav';
 import Hero from './components/hero';
-import LiveSystems from './components/live-systems';
 import Projects from './components/projects';
+import LiveSystems from './components/live-systems';
 import Skills from './components/skills';
 import About from './components/about';
 import Contact from './components/contact';
@@ -18,8 +18,8 @@ export default function Home() {
     <main style={{ minHeight: '100vh', background: '#0D1117' }}>
       <Nav />
       <Hero />
-      <LiveSystems />  {/* id="agents" */}
       <Projects />     {/* id="projects" */}
+      <LiveSystems />  {/* id="agents" */}
       <Skills />       {/* id="skills" */}
       <About />        {/* id="about" */}
       <Contact />      {/* id="contact" */}

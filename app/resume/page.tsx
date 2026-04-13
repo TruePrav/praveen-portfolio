@@ -1,69 +1,74 @@
 'use client'
 
 import { useState } from 'react';
+import Nav from '../components/nav';
 
 export default function Resume() {
   const [view, setView] = useState<'web3' | 'web2'>('web2');
 
   const web2Experience = [
     {
-      role: 'AI Engineer',
-      company: 'Independent / Freelance',
-      period: '01/2024 - Present',
-      responsibilities: [
-        'Architected and shipped Digisales (digisales.ca) — a D2C digital gift card platform built on Next.js and Supabase, with AI-powered customer support via autonomous agents handling real-time code delivery.',
-        'Built autonomous trading infrastructure (Degen) on Polymarket using Python, Polygon/USDC, and ICT methodology — live prediction market trading bot with conviction scoring and risk management.',
-        'Engineered Greenbox Barbados (greenboxbarbados.com) — full-stack platform for a 100% vegan food delivery business in Barbados, built on Next.js with online ordering, delivery management, and AI-assisted operations.',
-        'Designed and deployed Alfred — a custom AI personal assistant trained on personal business context, operating 24/7 as a fully autonomous ops partner across PLAY Barbados and personal projects.',
-      ],
-      tools: ['Python', 'Next.js', 'Supabase', 'PostgreSQL', 'LangChain', 'LangGraph', 'OpenClaw', 'Polygon/Web3', 'AI Agents', 'Vercel'],
-    },
-    {
       role: 'AI Agent Engineer',
       company: 'Infinite Technology Inc. (PLAY Barbados)',
       period: '01/2024 - Present',
       responsibilities: [
-        'Built and deployed a multi-agent AI network (PLAYMaster, Scout, Ledger, Codex) using LangChain, LangGraph, and OpenClaw — automating 40%+ of daily ops tasks including sales reconciliation, customer support, and content generation.',
-        'Implemented and managed Freshdesk end-to-end, including staff training, support portal setup, workflows, and a full Knowledge Base.',
-        'Led Lightspeed POS integration with Counterpoint SQL — built custom reconciliation pipeline syncing 2 locations and Google Sheets reporting.',
-        'Managed marketing operations including content strategy, AI-powered social media (TikTok/Instagram), and digital growth initiatives.',
+        'Architected and deployed a production multi-agent AI system using LangChain, automating customer support, inventory reconciliation, and marketing workflows across 2 retail locations.',
+        'Built specialized AI agents from scratch: Customer Service Agent (WhatsApp Business, 24/7 support), Inventory Reconciliation Agent (multi-system data synthesis from POS and suppliers), and Marketing Content Agent (brand voice consistency, multi-platform generation).',
+        'Owned the complete Agent Development Life Cycle — designing evaluation workflows, running daily prompt iteration pipelines, handling edge cases, and continuously monitoring production performance.',
+        'Designed LangSmith evaluation pipelines across 3 deployed agents — 73+ evals, 100% pass rate on customer support agent in production.',
+        'Led major improvements to the company online presence including product updates, layout enhancements, and development of a new e-commerce platform for digital sales.',
       ],
-      tools: ['Python', 'Node.js', 'LangChain', 'LangGraph', 'OpenClaw', 'Google Sheets API', 'Lightspeed', 'Counterpoint SQL', 'Freshdesk', 'AI Automation'],
+      tools: ['Python', 'Node.js', 'LangChain', 'LangGraph', 'LangSmith', 'OpenClaw', 'WhatsApp Business API', 'Google Sheets API', 'Lightspeed POS', 'Freshdesk', 'AI Automation'],
+    },
+    {
+      role: 'AI Engineer',
+      company: 'Independent / Freelance',
+      period: '01/2024 - Present',
+      responsibilities: [
+        'Built an AI-powered inventory replenishment tool for a Barbados clothing retailer — FastAPI backend with pydantic-ai and GPT-4o-mini that processes Lightspeed POS exports through a multi-stage match pipeline (exact, fuzzy, LLM fallback) to generate prioritized restock reports across 2 stores and a warehouse.',
+        'Architected and shipped Digisales (digisales.ca) — a D2C digital gift card platform built on Next.js and Supabase, with AI-powered customer support agents handling real-time code delivery.',
+        'Built autonomous trading infrastructure (Degen) on Polymarket using Python, Polygon/USDC, and ICT methodology — live prediction market bot with conviction scoring and risk management.',
+        'Engineered Greenbox Barbados (greenboxbarbados.com) — full-stack platform for a vegan food delivery business in Barbados with online ordering, delivery management, and AI-assisted operations.',
+        'Designed and deployed Alfred — a custom AI personal assistant operating 24/7 as a fully autonomous ops partner across PLAY Barbados and personal projects.',
+      ],
+      tools: ['Python', 'FastAPI', 'Next.js', 'Supabase', 'PostgreSQL', 'pydantic-ai', 'OpenAI GPT-4o-mini', 'LangChain', 'OpenClaw', 'Polygon/Web3', 'Render', 'Vercel'],
     },
     {
       role: 'Technical Support Team Lead',
       company: 'Silverware POS',
-      period: '05/2022 - 01/2024',
+      period: '05/2022 - 12/2023',
       responsibilities: [
-        'Promoted from Analyst role due to strong performance and leadership ability.',
+        'Promoted from Analyst to Team Lead within 6 months based on performance and leadership ability.',
+        'Coached and mentored Level 1 Technical Support Analysts through scorecards, training sessions, and daily guidance.',
         'Led complex client support cases across phone, chat, and email for 500+ business accounts.',
-        'Prioritized daily tasks based on urgency, impact, and client deadlines, demonstrating strong judgment and independence.',
-        'Mentored junior agents, helping improve consistency and service excellence across the support team.',
+        'Handled client and internal escalations, performed software and hardware testing, and completed on-site implementation tasks.',
+        'Ensured efficient operation of the Technical Support team through analysis, reporting, and deficiency recreation.',
       ],
-      tools: ['Zendesk', 'Microsoft Teams', 'Outlook', 'Azure DevOps', 'SQL', 'Proprietary Remote Tools', 'Internal Cloud-Based Systems'],
+      tools: ['Zendesk', 'Microsoft Teams', 'Outlook', 'Azure DevOps', 'SQL', 'Remote Access Tools', 'Internal Cloud Systems'],
     },
     {
       role: 'Technical Support Analyst',
       company: 'Silverware POS',
       period: '11/2021 - 05/2022',
       responsibilities: [
-        'Provided frontline support for POS and back-office systems in a fast-paced SaaS environment.',
-        'Diagnosed and resolved technical issues remotely, using Zendesk and remote access tools.',
-        'Assisted with device setup, account provisioning, and onboarding new clients.',
-        'Logged and escalated unresolved issues, contributing to faster triaging and team insights.',
+        'Provided Level 1 Technical Support for POS and back-office systems via telephone and remote access.',
+        'Resolved issues across networking (switches/routers), hardware (POS workstations, printers, pin-pads), and their respective software.',
+        'Maintained communication with third-party vendors: Epson, Maestro PMS, Merchant Processors, Clover, HotSchedules.',
+        'Established and repaired cluster Quorum in multi-server database environments.',
+        'Collected and maintained a problems-and-solutions log to accelerate team triaging. Worked in a 24/7 environment.',
       ],
-      tools: ['Zendesk', 'Microsoft Teams', 'Outlook', 'Proprietary Remote Tools', 'Internal Cloud-Based Systems'],
+      tools: ['Zendesk', 'Microsoft Teams', 'SQL', 'Clover', 'HotSchedules', 'Epson', 'Remote Access Tools'],
     },
     {
       role: 'IT Coordinator',
       company: 'Green & Spiegel',
       period: '11/2019 - 07/2020',
       responsibilities: [
-        'Delivered first-line support to 120+ professionals, resolving access, software, and technical issues across multiple platforms.',
-        'Managed user provisioning, license control, and access escalations in Microsoft 365 and internal CRM tools.',
-        'Logged service trends and submitted issue reports for team improvement, enhancing visibility into recurring cases.',
-        'Ran internal cybersecurity simulations and delivered staff training to improve phishing awareness.',
-        'Handled employee onboarding and offboarding, ensuring secure device setup and account access.',
+        'Delivered day-to-day technical support to 120+ employees, logging all solutions and repairs in ticketing system.',
+        'Managed creation, deletion, and administration of Active Directory and proprietary software user accounts.',
+        'Ran internal cybersecurity simulations and delivered phishing awareness training to all staff.',
+        'Diagnosed, troubleshot, and resolved hardware, software, and network issues across the firm.',
+        'Created custom reports on SQL database and assisted managers with tasks to maintain productivity.',
       ],
       tools: ['Microsoft 365', 'Active Directory', 'SQL'],
     },
@@ -71,9 +76,9 @@ export default function Resume() {
 
   const web3Experience = [
     {
-      role: 'Collab Manager',
+      role: 'Community / Collab Manager',
       company: 'EHive',
-      period: '04/2024 - Present',
+      period: '04/2024 - 04/2025',
       responsibilities: [
         'Organized and hosted AMAs to educate the EHive community about new Web3 projects.',
         'Facilitated cross-community collaborations to expand outreach and network strength.',
@@ -93,10 +98,10 @@ export default function Resume() {
         'Assisted with announcements and newsletters.',
         'Provided prompt and professional support to users.',
       ],
-      tools: ['Discord', 'Twitter', 'Telegram', 'Google Sheets','Notion'],
+      tools: ['Discord', 'Twitter', 'Telegram', 'Google Sheets', 'Notion'],
     },
     {
-      role: 'Collab/Community Manager',
+      role: 'Collab / Community Manager',
       company: 'The Tribe',
       period: '01/2022 - 12/2024',
       responsibilities: [
@@ -105,7 +110,7 @@ export default function Resume() {
         'Hosted Discord events to engage the community and reward users.',
         'Collected and analyzed feedback to improve strategies.',
       ],
-      tools: ['Discord', 'Twitter', 'Telegram', 'Google Sheets','Airtable'],
+      tools: ['Discord', 'Twitter', 'Telegram', 'Google Sheets', 'Airtable'],
     },
     {
       role: 'Project Manager',
@@ -117,73 +122,114 @@ export default function Resume() {
         'Led moderators and collab managers with task delegation and scheduling.',
         'Organized high-engagement community events.',
       ],
-      tools: ['Discord', 'Twitter', 'Telegram', 'Google Sheets',],
+      tools: ['Discord', 'Twitter', 'Telegram', 'Google Sheets'],
     },
   ];
+
   const experience = view === 'web3' ? web3Experience : web2Experience;
 
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="mt-16 text-3xl font-bold mb-8">Experience</h1>
+    <div style={{ minHeight: '100vh', background: '#0D1117', paddingBottom: '80px' }}>
+      <Nav />
+      <div className="container mx-auto px-6 max-w-4xl" style={{ paddingTop: '120px' }}>
 
+        <div style={{ marginBottom: '48px' }}>
+          <p style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#22D3EE', fontFamily: "'Space Grotesk', sans-serif", marginBottom: '12px' }}>
+            EXPERIENCE
+          </p>
+          <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 'clamp(2rem, 5vw, 2.8rem)', fontWeight: 800, color: '#F0F6FC', lineHeight: 1.15, letterSpacing: '-0.02em', marginBottom: '8px' }}>
+            Praveen Mahtani
+          </h1>
+          <p style={{ color: 'rgba(240,246,252,0.5)', fontSize: '1rem' }}>
+            AI Agent Engineer — Toronto, Canada
+          </p>
+        </div>
 
-      <div className="flex justify-center mb-8 gap-4">
-        <button
-          onClick={() => setView('web2')}
-          className={`px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 ${
-            view === 'web2'
-              ? 'bg-primary-600 text-white shadow-md ring-2 ring-primary-400'
-              : 'bg-transparent text-white hover:bg-primary-700/20'
-          }`}
-        >
-          Web2 Resume
-        </button>
-        <button
-          onClick={() => setView('web3')}
-          className={`px-4 py-2 rounded-md text-sm font-semibold transition-all duration-200 ${
-            view === 'web3'
-              ? 'bg-primary-600 text-white shadow-md ring-2 ring-primary-400'
-              : 'bg-transparent text-white hover:bg-primary-700/20'
-          }`}
-        >
-          Web3 Resume
-        </button>
-      </div>
+        <div style={{ display: 'flex', gap: '8px', marginBottom: '40px', padding: '4px', background: 'rgba(255,255,255,0.04)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.06)', width: 'fit-content' }}>
+          {(['web2', 'web3'] as const).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setView(tab)}
+              style={{
+                padding: '8px 20px',
+                borderRadius: '7px',
+                fontSize: '0.82rem',
+                fontWeight: 600,
+                fontFamily: "'Space Grotesk', sans-serif",
+                letterSpacing: '0.03em',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                background: view === tab ? '#22D3EE' : 'transparent',
+                color: view === tab ? '#0D1117' : 'rgba(240,246,252,0.5)',
+                boxShadow: view === tab ? '0 2px 12px rgba(34,211,238,0.3)' : 'none',
+              }}
+            >
+              {tab === 'web2' ? 'Web2 Resume' : 'Web3 Resume'}
+            </button>
+          ))}
+        </div>
 
-      <div className="space-y-12">
-        {experience.map((exp, index) => (
-          <div key={index} className="relative pl-8">
-            <div className="absolute left-0 top-0 h-full w-0.5 bg-accent/20" />
-            <div className="absolute left-0 top-1/2 w-3 h-3 bg-accent rounded-full -mt-1.5" />
-
-            <div className="space-y-4">
-              <div className="flex justify-between items-start">
-                <h2 className="text-xl font-heading font-bold text-text-primary">{exp.role}</h2>
-                <span className="text-sm text-text-secondary">{exp.period}</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+          {experience.map((exp, index) => (
+            <div
+              key={index}
+              style={{
+                padding: '28px 32px',
+                borderRadius: '16px',
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.07)',
+                borderLeft: '3px solid rgba(34,211,238,0.4)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '8px', marginBottom: '4px' }}>
+                <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.15rem', fontWeight: 700, color: '#F0F6FC', margin: 0 }}>
+                  {exp.role}
+                </h2>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: '0.72rem', color: 'rgba(240,246,252,0.35)', letterSpacing: '0.05em', flexShrink: 0 }}>
+                  {exp.period}
+                </span>
               </div>
-              <h3 className="text-text-primary">{exp.company}</h3>
 
-              <div className="bg-neutral-900 text-white p-4 rounded-md shadow-sm">
-                <ul className="list-disc list-inside text-text-secondary space-y-2">
-                  {exp.responsibilities.map((resp, i) => (
-                    <li key={i}>{resp}</li>
-                  ))}
-                </ul>
+              <p style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '0.85rem', fontWeight: 600, color: '#22D3EE', marginBottom: '18px' }}>
+                {exp.company}
+              </p>
 
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {exp.tools.map((tool, i) => (
-                    <span key={i} className="status-badge">
-                      {tool}
-                    </span>
-                  ))}
-                </div>
+              <ul style={{ margin: '0 0 20px 0', padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {exp.responsibilities.map((resp, i) => (
+                  <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.875rem', color: 'rgba(240,246,252,0.6)', lineHeight: 1.65 }}>
+                    <span style={{ color: '#22D3EE', flexShrink: 0, marginTop: '1px' }}>+</span>
+                    {resp}
+                  </li>
+                ))}
+              </ul>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                {exp.tools.map((tool, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      fontSize: '0.7rem',
+                      fontWeight: 600,
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      letterSpacing: '0.04em',
+                      color: 'rgba(34,211,238,0.8)',
+                      background: 'rgba(34,211,238,0.08)',
+                      border: '1px solid rgba(34,211,238,0.18)',
+                      borderRadius: '5px',
+                      padding: '3px 9px',
+                    }}
+                  >
+                    {tool}
+                  </span>
+                ))}
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-
-
     </div>
   );
 }

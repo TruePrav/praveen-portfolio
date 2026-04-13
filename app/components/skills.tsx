@@ -25,7 +25,7 @@ const skillGroups = [
     category: 'Bots & Infra',
     icon: '🔗',
     color: '#8B5CF6',
-    skills: ['Telegram Bots', 'Discord Bots', 'Slack Bots', 'GitHub', 'Linux', 'Vercel', 'Environment Automation'],
+    skills: ['Telegram Bots', 'Discord Bots', 'Slack Bots', 'N8N', 'GitHub', 'Linux', 'Vercel', 'Environment Automation'],
   },
   {
     category: 'Ops & Tools',
