@@ -97,7 +97,7 @@ export default function Nav() {
                 return (
                   <button
                     key={item.id}
-                    onClick={() => scrollTo(item.id)}
+                    onClick={() => scrollTo(item.id!)}
                     className="nav-link"
                     style={{ color: isActive ? 'var(--accent)' : undefined, transition: 'color 0.2s' }}
                   >
