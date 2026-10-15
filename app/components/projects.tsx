@@ -58,13 +58,13 @@ const projects = [
     tag: 'Internal - E-commerce',
     url: 'https://digisales.ca',
     description:
-      'Custom digital storefront for online gift card and digital product sales. Agent workflows handle product queries, order fulfillment, and customer support with zero manual processing.',
+      'Custom digital storefront for online gift card and digital product sales. Card payments are taken through Moneris, product codes are encrypted at rest, and eligible orders are fulfilled automatically from a supplier integration, with an admin dashboard and role-based permissions behind it.',
     impact: [
       'Full ecommerce site built from scratch',
-      'Automated delivery of digital products',
-      'Building agents to fully manage the business',
+      'Automated delivery of digital products after payment',
+      'Admin dashboard with role-based permissions and payment diagnostics',
     ],
-    stack: ['Next.js', 'TypeScript', 'Tailwind', 'SQL', 'LangChain', 'REST APIs', 'Slack', 'Google Sheets'],
+    stack: ['Next.js', 'TypeScript', 'Tailwind', 'Supabase', 'Moneris', 'Resend', 'Twilio'],
     accent: '#22D3EE',
     glow: 'rgba(34,211,238,0.06)',
     number: '04',
@@ -84,6 +84,70 @@ const projects = [
     accent: '#22C55E',
     glow: 'rgba(34,197,94,0.06)',
     number: '05',
+  },
+  {
+    title: 'AIlevelUp Connect',
+    tag: 'Deployed - Messaging Platform',
+    url: 'https://connect.ailevelup.ca',
+    description:
+      'Multi-tenant messaging platform that lets businesses run customer conversations on the official WhatsApp Business Platform and by email from one inbox. Outbound sends go through a queue and a worker that enforces the 24 hour window, template fallback, opt-outs and rate limits, with broadcasts, tickets and automations on top.',
+    impact: [
+      'Tenant-isolated data with row-level security on every business table',
+      'Queue-driven sending with consent and opt-out checks in one place',
+      'Plan gating and subscription billing in progress',
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Supabase', 'WhatsApp Cloud API', 'pgmq'],
+    accent: '#22C55E',
+    glow: 'rgba(34,197,94,0.06)',
+    number: '06',
+  },
+  {
+    title: 'LevelUp Dispatch',
+    tag: 'Live - Courier Logistics',
+    url: 'https://ailevelup-dispatch.vercel.app',
+    description:
+      'Delivery route manager for small Caribbean courier businesses. It stores doorstep GPS pins and photos, plans routes of 50+ stops, and gives drivers a phone workflow for navigation, proof of delivery and failed-delivery outcomes. A partner API with scoped keys and an OpenAPI spec lets other companies send manifests and read delivery status.',
+    impact: [
+      'Proof photos and drop-off location photos on every stop',
+      'Route optimization with Google Maps, installable driver PWA',
+      'Partner API with per-tenant keys, rate limits and cross-tenant isolation checks',
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'Supabase', 'Google Maps', 'PWA'],
+    accent: '#F97316',
+    glow: 'rgba(249,115,22,0.06)',
+    number: '07',
+  },
+  {
+    title: 'AIlevelUp Instant Site',
+    tag: 'In Build - AI Site Generator',
+    url: '',
+    description:
+      'Answer a few questions, one at a time, and an agent turns the answers into a designed, live website for your business in about 60 seconds, with working contact, booking or order forms where they fit. Sites are described as structured JSON and rendered by one multi-tenant Next.js app built from a shared design system.',
+    impact: [
+      'Typed SiteSpec schema validated before anything is published',
+      'Claude-generated copy with a deterministic fallback',
+      'Automated design lint, accessibility and Lighthouse quality gates',
+    ],
+    stack: ['Next.js', 'TypeScript', 'Tailwind', 'Zod', 'Supabase', 'Anthropic Claude', 'Vitest', 'Playwright'],
+    accent: '#8B5CF6',
+    glow: 'rgba(139,92,246,0.06)',
+    number: '08',
+  },
+  {
+    title: 'LevelUp Voice',
+    tag: 'Live - AI Phone Host',
+    url: '',
+    description:
+      'AI phone host for Barbados restaurants, bars and hotels that answers calls, takes reservations and passes messages to staff. Each venue is described in a config folder and provisioned entirely from code, so adding a venue is a data change rather than a rebuild.',
+    impact: [
+      'Live on a real phone number for its first venue',
+      'Idempotent provisioning CLI with an offline test suite',
+      'Onboarding portal for venue owners live, dashboard in progress',
+    ],
+    stack: ['Python', 'Vapi', 'ElevenLabs', 'Deepgram', 'Supabase', 'Deno', 'Vercel'],
+    accent: '#60A5FA',
+    glow: 'rgba(96,165,250,0.06)',
+    number: '09',
   },
 ];
 

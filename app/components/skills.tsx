@@ -81,13 +81,13 @@ const skillGroups: SkillGroup[] = [
     category: 'AI & Agents',
     icon: AgentIcon,
     color: '#22D3EE',
-    skills: ['LangChain', 'Anthropic Claude', 'OpenAI', 'Google Gemini', 'Grok / xAI', 'OpenClaw', 'Multi-Agent Systems', 'Prompt Engineering', 'RAG', 'MCP'],
+    skills: ['LangChain', 'Anthropic Claude', 'OpenAI', 'Google Gemini', 'Grok / xAI', 'OpenClaw', 'Multi-Agent Systems', 'Voice Agents (Vapi)', 'Prompt Engineering', 'RAG', 'MCP'],
   },
   {
     category: 'Backend',
     icon: BackendIcon,
     color: '#8B5CF6',
-    skills: ['Python', 'Node.js', 'REST APIs', 'SQL', 'Automation Pipelines', 'Cron / Scheduling'],
+    skills: ['Python', 'Node.js', 'REST APIs', 'Supabase / Postgres', 'Moneris Payments', 'Automation Pipelines', 'Cron / Scheduling'],
   },
   {
     category: 'Frontend',
@@ -99,7 +99,7 @@ const skillGroups: SkillGroup[] = [
     category: 'Bots & Infra',
     icon: InfraIcon,
     color: '#8B5CF6',
-    skills: ['Telegram Bots', 'Discord Bots', 'Slack Bots', 'N8N', 'GitHub', 'Linux', 'Vercel', 'Environment Automation'],
+    skills: ['WhatsApp Business API', 'Telegram Bots', 'Discord Bots', 'Slack Bots', 'N8N', 'GitHub', 'Linux', 'Vercel', 'Environment Automation'],
   },
   {
     category: 'Ops & Tools',
