@@ -16,3 +16,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Alfred project-audit notes (local working notes, not committed)
+_vault/
