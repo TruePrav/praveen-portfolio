@@ -53,7 +53,16 @@ export default function Hero() {
               {hero.stats.map((st) => (
                 <div key={st.label} className={s.heroStat}>
                   <dt className={s.heroStatLabel}>{st.label}</dt>
-                  <dd className={s.heroStatValue}>{st.value}</dd>
+                  <dd className={s.heroStatValue}>
+                    {st.href ? (
+                      <a href={st.href} target="_blank" rel="noopener noreferrer" className={s.statLink}>
+                        {st.value}
+                        <span className={s.srOnly}> (verify on Credly, opens in a new tab)</span>
+                      </a>
+                    ) : (
+                      st.value
+                    )}
+                  </dd>
                 </div>
               ))}
             </dl>

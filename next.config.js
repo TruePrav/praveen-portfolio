@@ -1,5 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Retired pages: send old inbound links to the home page.
+  async redirects() {
+    return [
+      { source: "/bots", destination: "/", permanent: true },
+      { source: "/twitter", destination: "/", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

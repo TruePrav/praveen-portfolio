@@ -450,6 +450,16 @@
 }
 
 .textLink,
+.statLink {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--teal);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 2px;
+}
+.statLink:hover {
+  color: var(--teal-text);
+}
 .inlineLink {
   display: inline-flex;
   align-items: center;

@@ -61,7 +61,7 @@ function build() {
     `## Experience\n\n${[...resume.web2, ...resume.web3].map(experience).join('\n\n')}`,
 
     `## Certifications\n\n${resume.certifications
-      .map((c) => `- ${c.name}, ${c.issuer} (${c.date}): ${c.detail}`)
+      .map((c) => `- ${c.name}, ${c.issuer} (${c.date}): ${c.detail}${c.url ? ` Verify: ${c.url}` : ''}`)
       .join('\n')}`,
 
     `## Contact\n\n${contact.blurb}\n\nEmail ${site.email}`,

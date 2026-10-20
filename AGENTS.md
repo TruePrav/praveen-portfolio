@@ -1,6 +1,6 @@
 # praveen-portfolio - Agent Guide
 
-> What: Praveen Mahtani's personal portfolio (praveenmahtani.xyz): AI Agent Engineer positioning, shipped systems, agent network, skills, resume. Stack: Next.js 14.2 (app router) / React 18 / TypeScript strict / Tailwind 3.4 / Vercel. Status: live at https://praveenmahtani.xyz (main branch auto-deploys on Vercel).
+> What: Praveen Mahtani's personal portfolio (praveenmahtani.xyz): AI Agent Engineer positioning, shipped systems, agent network, skills, resume. Stack: Next.js 14.2 (app router) / React 18 / TypeScript strict / Tailwind 3.4 / Vercel. Status: live at https://www.praveenmahtani.xyz (the apex 307-redirects to www; `site.url` uses www; main branch auto-deploys on Vercel).
 
 ## Commands
 - dev: `npm run dev` (port 3000) | build: `npm run build` | lint: `npm run lint` | types: `npx tsc --noEmit`
@@ -14,7 +14,7 @@
 - `app/components/island.module.css` - ALL Island tokens (`--sand`, `--ink`, `--teal`, `--coral`, `--serif`, `--sans`, shadows, radii) are defined on its `.root` class, applied to `<body>` in `app/layout.tsx`, so every route inherits them. Also holds shared component styles.
 - `app/resume/` - `/resume`: `page.tsx` (server; header, certifications, Nav with `base="/"`, Footer), `ResumeTabs.tsx` (client, accessible Web2/Web3 tablist, shows `experience.logo` when set), `resume.module.css` (includes `@media print`: white, nav/footer hidden, both tabs printed). Data from `content.resume`.
 - Logos: `public/logos/` (`play.png`, `levelup.png`, `digisales.png` + `digisales-on-dark.png`, `greenbox.jpg`, `silverware.png`), referenced from `content.ts`. `tone: 'dark'` logos sit on a dark plate, `tone: 'light'` on a light plate. Old `public/play-logo.png`, `tp-logo.png`, `greenbox-logo.png`, `digisales2.png`, `digisales-old.png` are unused leftovers.
-- `app/bots/page.tsx`, `app/twitter/page.tsx` - STALE, unlinked, kept for old inbound links; only recolored (inline Tailwind classes) to stay readable on the light base. Do not extend.
+- `/bots` and `/twitter` were removed 2026-10-20; `next.config.js` permanently redirects both to `/`. Copies in `C:\sync\praveen-portfolioackup-2026-10-20-hero-circleemoved-pages\`.
 - Backups: the previous dark design, globals, layout, resume and the rejected design proposals are in `C:\sync\praveen-portfolio\backup-2026-10-16-pre-island\`.
 - `app/globals.css` - minimal base only: Tailwind directives, box-sizing, smooth scroll (off for reduced motion), body bg/color. No design tokens here.
 - `app/layout.tsx` - root layout: Fraunces + Manrope via `next/font/google`, Island root class on `<body>`, Analytics, metadata (title, description, openGraph, twitter card) and a schema.org Person JSON-LD block, all from `content.ts`.

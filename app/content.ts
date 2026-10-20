@@ -20,6 +20,7 @@ export interface Site {
 export interface Stat {
   value: string;
   label: string;
+  href?: string;
 }
 
 export interface Hero {
@@ -116,6 +117,7 @@ export interface Certification {
   issuer: string;
   date: string;
   detail: string;
+  url?: string;
 }
 
 export interface Resume {
@@ -124,9 +126,12 @@ export interface Resume {
   certifications: Certification[];
 }
 
+// Public Credly badge for the Anthropic CCA-F certification.
+const CCAF_URL = 'https://www.credly.com/badges/466975c6-89bc-4748-9af0-f33688201e9c';
+
 export const site: Site = {
   name: 'Praveen Mahtani',
-  url: 'https://praveenmahtani.xyz',
+  url: 'https://www.praveenmahtani.xyz',
   role: 'AI Agent Engineer',
   title: 'Praveen Mahtani | AI Agent Engineer',
   description:
@@ -149,7 +154,7 @@ export const hero: Hero = {
     "I run production agent networks for a retail business in Barbados and for SMB clients through LevelUp Enterprises. I orchestrate my own development work with a multi-model agent layer, and I'm Anthropic CCA-F certified.",
   stats: [
     { value: '30+', label: 'projects under one orchestration layer' },
-    { value: 'CCA-F', label: 'Anthropic certified architect, 2026' },
+    { value: 'CCA-F', label: 'Anthropic certified architect, 2026', href: CCAF_URL },
   ],
   primaryCta: { label: 'See my work', target: 'work' },
   secondaryCta: { label: 'Get in touch', target: 'contact' },
@@ -653,7 +658,7 @@ export const about: About = {
     { label: 'Based in', value: 'Toronto, Canada' },
     { label: 'Roles', value: 'AI Agent Engineer, Infinite Technology Inc. (PLAY Barbados)' },
     { label: 'Founder', value: 'LevelUp Enterprises Inc.', href: 'https://ailevelup.ca' },
-    { label: 'Certified', value: 'Claude Certified Architect, Foundations (Anthropic, 2026)' },
+    { label: 'Certified', value: 'Claude Certified Architect, Foundations (Anthropic, 2026)', href: CCAF_URL },
     { label: 'Stack', value: 'Python, TypeScript, Next.js, Claude Agent SDK, LangGraph, Supabase' },
     { label: 'Online', value: '@TruePrav', href: 'https://x.com/TruePrav' },
   ],
@@ -827,6 +832,7 @@ export const resume: Resume = {
       date: 'July 2026',
       detail:
         'Proctored certification covering agent architecture, context management, multi-agent orchestration, production reliability, and tool and MCP design.',
+      url: CCAF_URL,
     },
   ],
 };

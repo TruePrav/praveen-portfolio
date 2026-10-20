@@ -61,7 +61,16 @@ export default function ResumePage() {
               <ul className={r.certList}>
                 {resume.certifications.map((c) => (
                   <li key={c.name} className={r.cert}>
-                    <h3 className={r.certName}>{c.name}</h3>
+                    <h3 className={r.certName}>
+                      {c.url ? (
+                        <a href={c.url} target="_blank" rel="noopener noreferrer" className={s.statLink}>
+                          {c.name}
+                          <span className={s.srOnly}> (verify on Credly, opens in a new tab)</span>
+                        </a>
+                      ) : (
+                        c.name
+                      )}
+                    </h3>
                     <p className={r.certMeta}>
                       {c.issuer}, {c.date}
                     </p>
