@@ -14,7 +14,7 @@ export default function Twitter() {
 
   return (
     <div className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl md:text-5xl font-bold text-white mt-12 mb-10 leading-tight tracking-tight animate-fade-in">
+      <h1 className="text-4xl md:text-5xl font-bold text-[#0E2A2A] mt-12 mb-10 leading-tight tracking-tight animate-fade-in">
         My Alter Ego
       </h1>
 

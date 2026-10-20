@@ -6,10 +6,10 @@ import { ChevronUpIcon } from '@heroicons/react/20/solid';
 export default function Bots() {
   const bots = [
     {
-      name: 'Alfred — AI Operations Agent',
+      name: 'Alfred - AI Operations Agent',
       description: 'Autonomous AI agent running on OpenClaw that orchestrates daily ops for PLAY Barbados and personal projects. Handles memory, scheduling, proactive alerts, and multi-agent coordination.',
       features: [
-        'Proactive heartbeat system — monitors context, logs, and active tasks every 30 minutes',
+        'Proactive heartbeat system - monitors context, logs, and active tasks every 30 minutes',
         'Long-term memory architecture with daily logs, curated MEMORY.md index, and on-demand recall',
         'Orchestrates sub-agents: Linda (content), Ledger (reconciliation), Scout (support), Codex (builds)',
         'Inline Telegram buttons for one-tap actions: status check, cron list, task triggers',
@@ -20,22 +20,22 @@ export default function Bots() {
       codeSections: [],
     },
     {
-      name: 'Scout — AI Customer Support Agent',
+      name: 'Scout - AI Customer Support Agent',
       description: 'LangChain ReAct agent deployed on Telegram for PLAY Barbados customer support. Handles gift card redemption issues, region policy checks, stock inquiries, and escalation routing.',
       features: [
         'Knowledge base search across 15+ gift card platforms (PSN, Xbox, Roblox, Nintendo, Steam, etc.)',
-        'Customer memory via Supabase — remembers repeat customers and prior issue history',
+        'Customer memory via Supabase - remembers repeat customers and prior issue history',
         'Automatic escalation routing: region mismatches, high-value disputes, fraud flags → Telegram alert',
         'Eval-driven development: 44 test cases, continuous pass rate tracking via LangSmith',
-        'Region policy enforcement — prevents incorrect purchases with real-time policy checks',
+        'Region policy enforcement - prevents incorrect purchases with real-time policy checks',
       ],
       status: 'Live & In Testing',
       tech: ['Python', 'LangChain', 'LangGraph', 'Grok', 'Supabase', 'Telegram Bot API', 'LangSmith'],
       codeSections: [],
     },
     {
-      name: 'Ledger — Daily Sales Reconciliation Agent',
-      description: 'Automated daily reconciliation pipeline that syncs Counterpoint POS data, OffGamers supplier orders, and Google Sheets — runs every morning at 8 AM EST without human intervention.',
+      name: 'Ledger - Daily Sales Reconciliation Agent',
+      description: 'Automated daily reconciliation pipeline that syncs Counterpoint POS data, OffGamers supplier orders, and Google Sheets - runs every morning at 8 AM EST without human intervention.',
       features: [
         'Pulls gift card sales from Counterpoint SQL (MSSQL via pyodbc) across 2 store locations',
         'Fetches OffGamers supplier order data and matches by denomination and brand',
@@ -48,26 +48,26 @@ export default function Bots() {
       codeSections: [],
     },
     {
-      name: 'PlayMaster — PLAY Agent Network Orchestrator',
-      description: 'LangChain supervisor agent that orchestrates the entire PLAY Barbados AI network. Routes incoming requests to the right specialist agent — support, reconciliation, inventory, or content — with automatic fallback handling.',
+      name: 'PlayMaster - PLAY Agent Network Orchestrator',
+      description: 'LangChain supervisor agent that orchestrates the entire PLAY Barbados AI network. Routes incoming requests to the right specialist agent - support, reconciliation, inventory, or content - with automatic fallback handling.',
       features: [
         'Routes customer queries, ops requests, and data tasks to the right specialist agent via tool-based delegation',
         'Manages 5 active subagents: Scout, Ledger, Prophet, Trender, and Codex',
-        'Hot-swap model routing — switches between Grok, Claude, and GPT based on task type and availability',
+        'Hot-swap model routing - switches between Grok, Claude, and GPT based on task type and availability',
         'Maintains AGENT_REGISTRY.md as single source of truth for all agent capabilities and routing rules',
-        'Connected to both Telegram and Discord — handles multi-channel orchestration in real time',
+        'Connected to both Telegram and Discord - handles multi-channel orchestration in real time',
       ],
       status: 'Live & Active',
       tech: ['Python', 'LangChain', 'LangGraph', 'xAI Grok', 'Anthropic Claude', 'Telegram Bot API', 'Discord', 'LangSmith'],
       codeSections: [],
     },
     {
-      name: 'Prophet — Inventory & Reorder Intelligence Agent',
+      name: 'Prophet - Inventory & Reorder Intelligence Agent',
       description: 'LangChain agent with 20 Lightspeed tools that monitors physical retail inventory across 2 PLAY Barbados locations, generates automated reorder reports, and surfaces low-stock alerts before shelves run dry.',
       features: [
-        '20 Lightspeed POS tools — queries sales velocity, stock levels, and purchase orders across both stores',
+        '20 Lightspeed POS tools - queries sales velocity, stock levels, and purchase orders across both stores',
         'Automated reorder report generation: identifies products below threshold based on 90/180-day sales history',
-        'OAuth token auto-refresh — stays authenticated without manual intervention',
+        'OAuth token auto-refresh - stays authenticated without manual intervention',
         'Writes formatted reports directly to Google Sheets with color-coded priority flags',
         'Discord alerts on critical low-stock items with direct reorder recommendations',
       ],
@@ -76,12 +76,12 @@ export default function Bots() {
       codeSections: [],
     },
     {
-      name: 'Trender — PLAY Social Content Agent',
+      name: 'Trender - PLAY Social Content Agent',
       description: 'LangChain content intelligence agent that researches trending topics in gaming and gift cards, then generates platform-native content briefs for PLAY Barbados TikTok, Instagram Reels, and static posts.',
       features: [
-        'Daily trend research across gaming, gift cards, and Caribbean market — web scraping + API sources',
+        'Daily trend research across gaming, gift cards, and Caribbean market - web scraping + API sources',
         'Generates structured content briefs: hook, format, caption, hashtags, and platform recommendation',
-        'Feedback loop system — approved/rejected content updates its scoring model over time',
+        'Feedback loop system - approved/rejected content updates its scoring model over time',
         'Writes output to Google Sheets content calendar and sends Telegram brief to ops team',
         'Integrated with Higgsfield API for AI video generation on approved video concepts',
       ],
@@ -90,16 +90,16 @@ export default function Bots() {
       codeSections: [],
     },
     {
-      name: 'Degen — Autonomous Prediction Market Trader',
+      name: 'Degen - Autonomous Prediction Market Trader',
       description: 'Autonomous 15-minute trading loop on Polymarket using USDC on Polygon. Applies ICT methodology and conviction scoring to identify mispriced prediction markets and trade them algorithmically.',
       features: [
         'Scans Polymarket every 15 minutes across crypto, politics, and sports markets',
         'ICT-inspired conviction scoring (0–12): liquidity, volume trend, resolution rate, price momentum',
-        'Entry filter: YES at 10–40% probability only — no 50/50 coin flips ever',
+        'Entry filter: YES at 10–40% probability only - no 50/50 coin flips ever',
         'Position management: 50% exit at 50¢, runner to 90¢, hard daily loss limit ($50 USDC)',
         'Real-time Telegram alerts on every buy/sell with P&L tracking and daily summaries',
       ],
-      status: 'Live — First Trades Launching',
+      status: 'Live - First Trades Launching',
       tech: ['Python', 'Polygon', 'USDC', 'py-clob-client', 'Polymarket API', 'Telegram Bot API', 'Web3'],
       codeSections: [],
     },
@@ -325,22 +325,22 @@ else:
 
   return (
     <div className="container mx-auto px-4 py-16">
-      <h1 className="mt-16 text-4xl md:text-5xl font-bold text-white mb-10">
+      <h1 className="mt-16 text-4xl md:text-5xl font-bold text-[#0E2A2A] mb-10">
         Bots & Automation Projects
       </h1>
 
       <div className="space-y-12">
         {bots.map((bot, index) => (
           <div key={index} className="relative pl-8">
-            <div className="absolute left-0 top-0 h-full w-0.5 bg-accent/20" />
-            <div className="absolute left-0 top-1/2 w-3 h-3 bg-accent rounded-full -mt-1.5" />
+            <div className="absolute left-0 top-0 h-full w-0.5 bg-[#0F766E]/25" />
+            <div className="absolute left-0 top-1/2 w-3 h-3 bg-[#0F766E] rounded-full -mt-1.5" />
 
             <div className="space-y-4">
               <div className="flex justify-between items-start">
-                <h2 className="text-xl font-heading font-bold text-text-primary">{bot.name}</h2>
-                <span className="text-sm text-text-secondary">{bot.status}</span>
+                <h2 className="text-xl font-bold text-[#0E2A2A]">{bot.name}</h2>
+                <span className="text-sm text-[#3F5757]">{bot.status}</span>
               </div>
-              <h3 className="text-text-primary">{bot.description}</h3>
+              <h3 className="text-[#0E2A2A]">{bot.description}</h3>
 
               <div className="bg-neutral-900 text-white p-4 rounded-md shadow-sm">
                 <div>
@@ -356,7 +356,7 @@ else:
                   <h4 className="font-semibold text-sm mb-2">Tech Stack</h4>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {bot.tech.map((tech, i) => (
-                      <span key={i} className="status-badge">{tech}</span>
+                      <span key={i} className="rounded-full bg-[#DDEFEA] px-3 py-1 text-xs font-semibold text-[#0B645D]">{tech}</span>
                     ))}
                   </div>
 
@@ -364,7 +364,7 @@ else:
                   <Disclosure>
                     {({ open }) => (
                       <>
-                        <Disclosure.Button className="flex items-center gap-2 px-3 py-1.5 text-sm bg-accent text-white rounded hover:opacity-90 transition">
+                        <Disclosure.Button className="flex items-center gap-2 px-3 py-1.5 text-sm bg-[#0F766E] text-white rounded hover:opacity-90 transition">
                           <ChevronUpIcon className={`w-4 h-4 transform transition-transform ${open ? 'rotate-180' : ''}`} />
                           {open ? 'Hide Code' : 'Show Code'}
                         </Disclosure.Button>

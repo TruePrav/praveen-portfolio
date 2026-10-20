@@ -1,28 +1,34 @@
-import { Metadata } from 'next';
-import Nav from './components/nav';
-import Hero from './components/hero';
-import Projects from './components/projects';
-import LiveSystems from './components/live-systems';
-import Skills from './components/skills';
-import About from './components/about';
-import Contact from './components/contact';
-
-export const metadata: Metadata = {
-  title: 'Praveen Mahtani — AI Systems Builder',
-  description:
-    'AI Agent Engineer based in Toronto. Building multi-agent AI systems, automation pipelines, and full-stack products.',
-};
+import s from './components/island.module.css';
+import About from './components/About';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import Hero from './components/Hero';
+import Nav from './components/Nav';
+import { NAV_LINKS } from './components/nav-links';
+import References from './components/References';
+import Skills from './components/Skills';
+import Systems from './components/Systems';
+import Work from './components/Work';
+import { site } from './content';
 
 export default function Home() {
   return (
-    <main style={{ minHeight: '100vh', background: '#0D1117' }}>
-      <Nav />
-      <Hero />
-      <Projects />     {/* id="projects" */}
-      <LiveSystems />  {/* id="agents" */}
-      <Skills />       {/* id="skills" */}
-      <About />        {/* id="about" */}
-      <Contact />      {/* id="contact" */}
-    </main>
+    <>
+      <a href="#main" className={s.skip}>
+        Skip to content
+      </a>
+      <div id="top" />
+      <Nav name={site.name} links={NAV_LINKS} />
+      <main id="main">
+        <Hero />
+        <References />
+        <Work />
+        <Systems />
+        <Skills />
+        <About />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }
